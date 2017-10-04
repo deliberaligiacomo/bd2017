@@ -1,0 +1,19 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: calc(100% - 65px);
+}
+
+.container{
+    margin-top: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+#searchBox{
+    max-width: 300px
+}
