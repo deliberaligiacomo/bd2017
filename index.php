@@ -1,10 +1,12 @@
 <!-- Bootstrap reference => https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
 
 <?php
-require(__DIR__ . '/php/services/Authentication.php');
-require(__DIR__ .'/php/services/Search.php');
+require(__DIR__ . '/php/services/AuthenticationService.php');
+require(__DIR__ .'/php/services/BooksService.php');
+require(__DIR__ .'/php/services/Defaults.php');
 
-if (!Authentication::isLoggedIn()) {
+
+if (!AuthenticationService::isLoggedIn()) {
     header("Location: " . Defaults::DEFAULT_BASE_URL . "/php/login.php");
 }
 ?>
@@ -24,7 +26,7 @@ if (!Authentication::isLoggedIn()) {
 
         <div class="container">
             <?php
-            $books = Search::research(isset($_GET["keyword"]) && $_GET["keyword"] != null ? $_GET["keyword"] : null);
+            $books = BooksService::research(isset($_GET["keyword"]) && $_GET["keyword"] != null ? $_GET["keyword"] : null);
             if (!$books || count($books) == 0) {
                 echo '
                 <div class="alert alert-info alert-dismissible fade show" role="alert">

@@ -1,14 +1,14 @@
 <?php
-    require_once(__DIR__ . '/../services/Authentication.php');
-    require_once(__DIR__ . '/../services/BookService.php');
+    require_once(__DIR__ . '/../services/AuthenticationService.php');
+    require_once(__DIR__ . '/../services/AuthorsService.php');
     require_once(__DIR__ . '/../services/Defaults.php');
 
 
-    if (!Authentication::isLoggedIn()) {
+    if (!AuthenticationService::isLoggedIn()) {
         die();
     }
 
-    $authors = BookService::getAuthors();
+    $authors = AuthorsService::getAuthors();
 ?>
 <div class="col-md-6">
     <form action="<?php echo Defaults::DEFAULT_BASE_URL . '/php/rest/add-book.php'; ?>" method="post" name="AddBookForm">

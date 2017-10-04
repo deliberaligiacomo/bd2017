@@ -1,5 +1,5 @@
 <?php
-    require_once('../services/Authentication.php');
+    require_once('../services/AuthenticationService.php');
     require_once('../services/Defaults.php');
 
     $isRegistred = false;
@@ -12,7 +12,7 @@
         isset($_POST["FirstName"]) &&
         isset($_POST["LastName"]) &&
         isset($_POST["BirthDate"])){
-        $isRegistred = Authentication::register($_POST["Username"], md5($_POST["Password"]),$_POST["FirstName"],$_POST["LastName"],$_POST["Email"],$_POST["BirthDate"]);
+        $isRegistred = AuthenticationService::register($_POST["Username"], md5($_POST["Password"]),$_POST["FirstName"],$_POST["LastName"],$_POST["Email"],$_POST["BirthDate"]);
     }
        
     if($isRegistred){

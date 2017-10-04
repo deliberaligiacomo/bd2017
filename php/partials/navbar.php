@@ -1,12 +1,12 @@
 <?php
-require_once( __DIR__ . '/../services/Authentication.php');
+require_once( __DIR__ . '/../services/AuthenticationService.php');
 require_once( __DIR__ . '/../services/Defaults.php');
 
 
 /**
  *  Indicates if the current user is logged in or not
  */
-$isLogged = Authentication::isLoggedIn();
+$isLogged = AuthenticationService::isLoggedIn();
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

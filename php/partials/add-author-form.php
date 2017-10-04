@@ -1,5 +1,9 @@
 <?php
-require_once( __DIR__ . '/../services/Defaults.php');
+    require_once( __DIR__ . '/../services/Defaults.php');
+
+    if (!AuthenticationService::isLoggedIn()) {
+        die();
+    }
 ?>
 <div class="col-md-6">
     <form action="<?php echo Defaults::DEFAULT_BASE_URL . '/php/rest/add-author.php'; ?>" method="post" name="AddAuthorForm">

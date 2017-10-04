@@ -1,6 +1,6 @@
 <?php
-    require_once('../services/Authentication.php');
-    require_once('../services/BookService.php');
+    require_once('../services/AuthenticationService.php');
+    require_once('../services/AuthorsService.php');
     require_once('../services/Defaults.php');
 
     $isAuthorAdded = false;
@@ -10,7 +10,7 @@
         isset($_POST["LastName"]) && 
         isset($_POST["BirthDate"]) &&
         isset($_POST["Nationality"])){
-        $isAuthorAdded = BookService::addAuthor($_POST["FirstName"], $_POST["LastName"], $_POST["BirthDate"], $_POST["Nationality"]);
+        $isAuthorAdded = AuthorsService::addAuthor($_POST["FirstName"], $_POST["LastName"], $_POST["BirthDate"], $_POST["Nationality"]);
     }
        
     if($isAuthorAdded){

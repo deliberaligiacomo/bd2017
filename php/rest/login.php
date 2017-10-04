@@ -1,12 +1,12 @@
 <?php
-    require_once('../services/Authentication.php');
+    require_once('../services/AuthenticationService.php');
     require_once('../services/Defaults.php');
 
     $isLogged = false;
 
     // if a username and a password is given in POST, then try to login
     if(isset($_POST["Username"]) && isset($_POST["Password"])){
-        $isLogged = Authentication::login($_POST["Username"], md5($_POST["Password"]));
+        $isLogged = AuthenticationService::login($_POST["Username"], md5($_POST["Password"]));
     }
        
     if($isLogged){

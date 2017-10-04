@@ -1,5 +1,5 @@
 <?php
-    require_once('../services/Authentication.php');
+    require_once('../services/AuthenticationService.php');
 
     // if logged in, destroy the session
     if(isset($_SESSION["Username"]))
