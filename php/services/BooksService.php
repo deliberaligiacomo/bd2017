@@ -41,7 +41,7 @@
                         :bookId
                     )
                 ');
-                    $bookId = $dbconn->lastInsertId();
+                    $bookId = $dbconn->lastInsertId("books_id_seq");
                     $statement->bindParam(":authorId", $authorId, PDO::PARAM_INT);
                     $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
                     $statement->execute();

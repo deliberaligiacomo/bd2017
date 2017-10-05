@@ -39,7 +39,7 @@ class AuthorsService {
             $authorStatment->execute();
             $isAdded = $authorStatment->rowCount() == 1;
             if($isAdded)
-                return $dbconn->lastInsertId();
+                return $dbconn->lastInsertId("authors_id_seq");
             else
                 return 0;
         }catch (PDOException $e) { 
