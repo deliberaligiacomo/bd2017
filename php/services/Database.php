@@ -3,28 +3,28 @@
 
 class Database { 
     /** local development */
-    /** The database connection url */
-    private $dbUrl = 'localhost';
-    /** The database port */
-    private $dbPort = '5432';
-    /** The databse name */
-    private $dbName = 'orsini';
-    /** The database user */
-    private $dbUser = 'postgres'; 
-    /** The database password for the above user */
-    private $dbPassword = 'root';
+//    /** The database connection url */
+//    private $dbUrl = 'localhost';
+//    /** The database port */
+//    private $dbPort = '5432';
+//    /** The databse name */
+//    private $dbName = 'orsini';
+//    /** The database user */
+//    private $dbUser = 'postgres'; 
+//    /** The database password for the above user */
+//    private $dbPassword = 'root';
 
     /** Unive development */
-    // /** The database connection url */
-    // private $dbUrl = 'dblab.dsi.unive.it';
-    // /** The database port */
-    // private $dbPort = '5432';
-    // /** The databse name */
-    // private $dbName = 'a2016u104';
-    // /** The database user */
-    // private $dbUser = 'a2016u104'; 
-    // /** The database password for the above user */
-    // private $dbPassword = 'XPhVUqk6';
+    /** The database connection url */
+     private $dbUrl = 'dblab.dsi.unive.it';
+     /** The database port */
+     private $dbPort = '5432';
+     /** The databse name */
+     private $dbName = 'a2016u104';
+     /** The database user */
+     private $dbUser = 'a2016u104'; 
+     /** The database password for the above user */
+     private $dbPassword = 'XPhVUqk6';
 
     /** The application settings instance */
     private static $instance = null;
