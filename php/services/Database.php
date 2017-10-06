@@ -1,54 +1,63 @@
 <?php
-// psql --host dblab.dsi.unive.it --username a2016u104
 
-class Database { 
-    /** local development */
-//    /** The database connection url */
-//    private $dbUrl = 'localhost';
-//    /** The database port */
-//    private $dbPort = '5432';
-//    /** The databse name */
-//    private $dbName = 'orsini';
-//    /** The database user */
-//    private $dbUser = 'postgres'; 
-//    /** The database password for the above user */
-//    private $dbPassword = 'root';
+    require_once(__DIR__ . '/../models/DatabseConnection.php');
 
-    /** Unive development */
-    /** The database connection url */
-     private $dbUrl = 'dblab.dsi.unive.it';
-     /** The database port */
-     private $dbPort = '5432';
-     /** The databse name */
-     private $dbName = 'a2016u104';
-     /** The database user */
-     private $dbUser = 'a2016u104'; 
-     /** The database password for the above user */
-     private $dbPassword = 'XPhVUqk6';
+    // psql --host dblab.dsi.unive.it --username a2016u104
 
-    /** The application settings instance */
-    private static $instance = null;
+    class Database {
 
-    /** Mark private for singleton use */
-    private function __construct() {
-      // TODO: inject databse info
-      // $this->$database = Container.inject(Databse);
+        /**
+         * The database connection configuration. Read from settings.json
+         * @var type DatabaseConnection
+         */
+        private $dbConfig = null;
+
+        /**
+         * The application database instance
+         * @var type Database
+         */
+        private static $instance = null;
+
+        /** 
+         * Mark private for singleton use
+         */
+        private function __construct() {
+            $settings = file_get_contents(__DIR__ . "/settings.json");
+            $configs = json_decode($settings, true);
+            if ($this->isDebug())
+                $this->dbConfig = $configs["Debug"]["Database"];
+            else
+                $this->dbConfig = $configs["Stage"]["Database"];
+        }
+
+        /**
+         * Returns the databse instance
+         */
+        public static function getInstance() {
+            if (Database::$instance == null)
+                Database::$instance = new Database();
+            return Database::$instance;
+        }
+
+        /**
+         * Returns a new connection
+         */
+        public function getConnection() {
+            $connectionString = 'pgsql:host=' . $this->dbConfig["Url"] . ';port=' . $this->dbConfig["Port"] . ';dbname=' . $this->dbConfig["Name"];
+            $connection = new PDO($connectionString, $this->dbConfig["User"], $this->dbConfig["Password"]);
+            $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $connection;
+        }
+
+        /**
+         * Return true if the current REMOTE_ADDRESS is local
+         * @return type boolean
+         */
+        private function isDebug() {
+            $whitelist = array('127.0.0.1', '::1', 'localhost');
+            return in_array($_SERVER['REMOTE_ADDR'], $whitelist);
+        }
+
     }
-
-    /** Returns the databse instance */
-    public static function getInstance() {
-        if(Database::$instance == null)
-            Database::$instance = new Database();
-       return Database::$instance;
-    } 
-
-     /** Returns the a new connection */
-    public function getConnection(){
-        $connectionString = 'pgsql:host=' . $this->dbUrl . ';port=' . $this->dbPort . ';dbname=' . $this->dbName;
-        $connection = new PDO($connectionString,$this->dbUser,$this->dbPassword);
-        $connection -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        return $connection;
-    }
-} 
 
 ?>

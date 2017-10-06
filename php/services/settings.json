@@ -1,0 +1,20 @@
+{
+    "Debug": {
+        "Database": {
+            "Url": "localhost",
+            "Port": 5432,
+            "Name": "orsini",
+            "User": "postgres",
+            "Password": "root"
+        }
+    },
+    "Stage": {
+        "Database": {
+            "Url": "dblab.dsi.unive.it",
+            "Port": 5432,
+            "Name": "a2016u104",
+            "User": "a2016u104",
+            "Password": "XPhVUqk6"
+        }
+    }
+}
