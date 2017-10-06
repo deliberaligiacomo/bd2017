@@ -6,7 +6,7 @@ class Defaults {
     /** Defualt DESC mode */
     const DESC = 'desc';
     /** Server default base starting url */
-    const DEFAULT_BASE_URL = '/bd2017-netbeans';
+    const DEFAULT_BASE_URL = '/bd2017';
 }
 
 ?>
