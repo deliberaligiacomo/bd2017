@@ -3,6 +3,9 @@ require_once(__DIR__ . '/AuthenticationService.php');
 require_once(__DIR__ . '/../models/Book.php');
 require_once(__DIR__ . '/../models/Author.php');
 
+/**
+ * Provides all Author CRUD operations.
+ */
 class AuthorsService { 
     /**
     *

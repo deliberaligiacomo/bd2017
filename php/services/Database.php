@@ -4,6 +4,9 @@
 
     // psql --host dblab.dsi.unive.it --username a2016u104
 
+    /**
+     * Rappresent the application database connection
+     */
     class Database {
 
         /**
@@ -18,7 +21,7 @@
          */
         private static $instance = null;
 
-        /** 
+        /**
          * Mark private for singleton use
          */
         private function __construct() {

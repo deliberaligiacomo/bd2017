@@ -1,3 +1,4 @@
+<!-- Reference API generation => \bd2017>php apigen.phar generate -s . -d ./docs -->
 <!-- Bootstrap reference => https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
 
 <?php
