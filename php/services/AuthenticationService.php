@@ -2,7 +2,9 @@
 
     ob_start();
     session_start();
-    require_once(__DIR__ . '/Database.php');
+    require_once(__DIR__ . '/Database.php');    
+    require_once(__DIR__ . '/LogsService.php');
+
 
     /**
      * Provides base methods for authenticating the users and all user CRUD operations.
@@ -35,7 +37,7 @@
                 unset($_SESSION["Username"]);
                 return false;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                LogsService::logException($e);
                 return false;
             }
         }
@@ -85,7 +87,7 @@
                 $statement->execute();
                 return $statement->rowCount() == 1;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                LogsService::logException($e);
                 return false;
             }
         }

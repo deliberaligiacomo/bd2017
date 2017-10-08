@@ -1,6 +1,5 @@
 <?php
-
-    require_once(__DIR__ . '/../models/DatabaseConnection.php');
+    require(__DIR__ . '/../models/DatabaseConnection.php');
 
     // psql --host dblab.dsi.unive.it --username a2016u104
 

@@ -4,7 +4,6 @@
 <?php
 require(__DIR__ . '/php/services/AuthenticationService.php');
 require(__DIR__ .'/php/services/BooksService.php');
-require(__DIR__ .'/php/services/Defaults.php');
 
 
 if (!AuthenticationService::isLoggedIn()) {

@@ -53,7 +53,7 @@
 
                 return $isBookAdded && $isLinkAdded;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                LogsService::logException($e);
                 return false;
             }
         }
@@ -104,7 +104,7 @@
                 }
                 return $books;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                LogsService::logException($e);
                 return null;
             }
         }
@@ -150,8 +150,37 @@
                 }
                 return $books;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                LogsService::logException($e);
                 return false;
+            }
+        }
+
+        /**
+         * Deletes a Book given its id
+         * @param $bookId integer
+         * @return boolean
+         */
+        public static function deleteBook($bookId) {
+            if ($bookId == null || $bookId < 0) {
+                return false;
+            }
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $query = '
+                        DELETE
+                        FROM 
+                            books
+                        WHERE
+                            id = :bookId
+                    ';
+
+                $statement = $dbconn->prepare($query);
+                $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+                $result = $statement->execute();
+                return $result->rowCount() == 1;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
             }
         }
 

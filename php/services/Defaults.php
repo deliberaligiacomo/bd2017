@@ -13,6 +13,11 @@
 
         /** Server default base starting url */
         const DEFAULT_BASE_URL = '/bd2017';
+        
+        /**
+         * The file where exception will be logged in. Relative path from web root.
+         */
+        const LOG_EXCEPTION_FILE = '/php/logs/exceptions.txt';
 
     }
 
