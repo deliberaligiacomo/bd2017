@@ -1,6 +1,6 @@
 # Progetto per il corso di Basi di Dati - Unive 2017
 
-Repository del progetto: "Recensione libri"
+Repository del progetto: "Recensione libri". Reference API accessibile [qui](https://deliberaligiacomo.github.io/bd2017).
 
 ## Base di Dati
 
