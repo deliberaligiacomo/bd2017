@@ -15,9 +15,9 @@ if (!AuthenticationService::isLoggedIn()) {
 <html>
     <head>
         <!-- Include CSS -->
-        <?php require(__DIR__  . '/php/styles.php') ?>
+        <?php require(__DIR__  . '/php/partials/styles.php') ?>
         <!-- Include JS -->
-        <?php require(__DIR__  . '/php/scripts.php') ?>
+        <?php require(__DIR__  . '/php/partials/scripts.php') ?>
         <title>Ricerca libri</title>
     </head>
     <body>

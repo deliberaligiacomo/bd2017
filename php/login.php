@@ -14,7 +14,7 @@
 <html>
     <head>
         <!-- Include CSS -->
-        <?php require(__DIR__ . '/../php/styles.php') ?>
+        <?php require(__DIR__ . '/../php/partials/styles.php') ?>
         <title>Ricerca libri - Login</title>
     </head>
     <body>
@@ -35,6 +35,6 @@
             </div>
         </div>
         <!-- Include JS -->
-        <?php require(__DIR__ . '/../php/scripts.php') ?>
+        <?php require(__DIR__ . '/../php/partials/scripts.php') ?>
     </body>
 </html>
