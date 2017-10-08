@@ -1,3 +1,3 @@
 # php/logs
 
-Contains log files.
+Contains only reusable views (eg. From, messages,...)
