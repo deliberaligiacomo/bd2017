@@ -95,7 +95,7 @@
 </span><span id="23" class="l"><a href="#23">23: </a>        <span class="php-keyword1">public</span> <span class="php-keyword1">static</span> <span class="php-keyword1">function</span> login(<span class="php-var">$username</span>, <span class="php-var">$password</span>) {
 </span><span id="24" class="l"><a href="#24">24: </a>            <span class="php-keyword1">try</span> {
 </span><span id="25" class="l"><a href="#25">25: </a>                <span class="php-var">$dbconn</span> = Database::getInstance()-&gt;getConnection();
-</span><span id="26" class="l"><a href="#26">26: </a>                <span class="php-var">$statement</span> = <span class="php-var">$dbconn</span>-&gt;prepare(<span class="php-quote">'SELECT usernsame FROM users WHERE lower(username) = lower(:username) AND password = :password'</span>);
+</span><span id="26" class="l"><a href="#26">26: </a>                <span class="php-var">$statement</span> = <span class="php-var">$dbconn</span>-&gt;prepare(<span class="php-quote">'SELECT username FROM users WHERE lower(username) = lower(:username) AND password = :password'</span>);
 </span><span id="27" class="l"><a href="#27">27: </a>                <span class="php-var">$statement</span>-&gt;bindParam(<span class="php-quote">&quot;:username&quot;</span>, <span class="php-var">$username</span>, PDO::PARAM_STR);
 </span><span id="28" class="l"><a href="#28">28: </a>                <span class="php-var">$statement</span>-&gt;bindParam(<span class="php-quote">&quot;:password&quot;</span>, <span class="php-var">$password</span>, PDO::PARAM_STR);
 </span><span id="29" class="l"><a href="#29">29: </a>                <span class="php-var">$statement</span>-&gt;execute();
