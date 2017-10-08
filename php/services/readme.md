@@ -1,3 +1,3 @@
-# PHP
+# php/services
 
-The root folder contains only pages user can reach.
+Contains only classes used in the backend, grouped by domain entity (eg. Book, Author, ...). Each entity service should have all CRUD operations.
