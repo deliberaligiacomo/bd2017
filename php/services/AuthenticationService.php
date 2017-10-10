@@ -11,11 +11,9 @@
     class AuthenticationService {
 
         /**
-         *
          * Given a username and a MD5 password returns true if a user with the given credentials exisits or not.
-         *
-         * @param username The user username
-         * @param password The user password (in MD5)
+         * @param username string The user username
+         * @param password string The user password (in MD5)
          * @return boolean
          *
          */
@@ -44,11 +42,8 @@
         }
 
         /**
-         *
          * Returns true if a session username exisits, false othwrwise.
-         *
          * @return boolean
-         *
          */
         public static function isLoggedIn() {
             return (isset($_SESSION["Username"]) && $_SESSION["Username"] != null) ? true : false;
@@ -71,15 +66,13 @@
         }
 
         /**
-         *
          * Register a new user
-         *
-         * @param username The user username
-         * @param password The user password (in MD5)
-         * @param firstName The user name
-         * @param lastName The user surname
-         * @param email The user email
-         * @param birthdate The user birthdate
+         * @param string username The user username
+         * @param string password The user password (in MD5)
+         * @param string firstName The user name
+         * @param string lastName The user surname
+         * @param string email The user email
+         * @param string birthdate The user birthdate
          * @return boolean
          *
          */

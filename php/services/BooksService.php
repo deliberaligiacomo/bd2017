@@ -12,15 +12,12 @@
     class BooksService {
 
         /**
-         *
          * Adds a new book
-         *
-         * @param title The book title
-         * @param image The book image url
-         * @param genre The book genre
-         * @param authorId The book authorId 
+         * @param string title The book title
+         * @param string image The book image url
+         * @param string genre The book genre
+         * @param integer authorId The book authorId 
          * @return The new added book id
-         *
          */
         public static function addBook($title, $image, $genre, $authorId) {
             try {
@@ -62,7 +59,6 @@
 
         /**
          * Adds a new review
-         * 
          * @param string $title
          * @param string $text
          * @param integer $grade
@@ -98,12 +94,9 @@
         }
 
         /**
-         *
          * Given a word returns the book's title (one or more) that contains that word, else returns all the titles
-         *
-         * @param keyword The keywork to search
+         * @param string keyword The keywork to search
          * @return Array<Book>
-         *
          */
         public static function research($keyword = null, $sort = Defaults::ASC) {
             try {
@@ -149,12 +142,9 @@
         }
 
         /**
-         *
          * Returns the list of books ordered by feedback, starting from the highliest rated
-         *
-         * @param keyword The keywork to search
+         * @param string keyword The keywork to search
          * @return Array<Book>
-         *
          */
         public static function listByFeedback() {
             try {
@@ -196,7 +186,7 @@
 
         /**
          * Deletes a Book given its id
-         * @param $bookId integer
+         * @param integer $bookId integer
          * @return boolean
          */
         public static function deleteBook($bookId) {
@@ -224,7 +214,6 @@
         }
 
         /**
-         * 
          * Gets a Book given its id
          * @param $bookId integer
          * @return Book

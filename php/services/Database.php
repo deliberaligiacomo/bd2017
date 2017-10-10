@@ -10,13 +10,13 @@
 
         /**
          * The database connection configuration. Read from settings.json
-         * @var type DatabaseConnection
+         * @var Models\DatabaseConnection
          */
         private $dbConfig = null;
 
         /**
          * The application database instance
-         * @var type Database
+         * @var Database
          */
         private static $instance = null;
 
@@ -34,6 +34,7 @@
 
         /**
          * Returns the databse instance
+         * @return Database
          */
         public static function getInstance() {
             if (Database::$instance == null)
@@ -43,6 +44,7 @@
 
         /**
          * Returns a new connection
+         * @return Connection
          */
         public function getConnection() {
             $connectionString = 'pgsql:host=' . $this->dbConfig["Url"] . ';port=' . $this->dbConfig["Port"] . ';dbname=' . $this->dbConfig["Name"];
@@ -53,7 +55,7 @@
 
         /**
          * Return true if the current REMOTE_ADDRESS is local
-         * @return type boolean
+         * @return boolean 
          */
         private function isDebug() {
             $whitelist = array('127.0.0.1', '::1', 'localhost');

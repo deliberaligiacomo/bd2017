@@ -8,8 +8,8 @@
 
         /**
          * Append the given string in the specified file
-         * @param type $filePath string: The file path
-         * @param type $contentToAppend string: The string to append
+         * @param string $filePath The file path
+         * @param string $contentToAppend The string to append
          */
         private static function log($filePath, $contentToAppend) {
             // Write the contents to the file, 
@@ -20,7 +20,7 @@
 
         /**
          * Logs in the 'logs/exceptions.txt' the given excpetion object
-         * @param type $exceptionObj object
+         * @param Object $exceptionObj 
          */
         public static function logException($exceptionObj) {
             $now = new DateTime();

@@ -10,15 +10,12 @@
     class AuthorsService {
 
         /**
-         *
          * Adds a new author
-         *
-         * @param firstName The author first name
-         * @param lastName The author last name
-         * @param birhDate The author birth date
-         * @param nationality The author nationality (string)
+         * @param string firstName The author first name
+         * @param string lastName The author last name
+         * @param string birhDate The author birth date
+         * @param string nationality The author nationality (string)
          * @return The new added author id
-         *
          */
         public static function addAuthor($firstName, $lastName, $birhDate, $nationality) {
             try {
@@ -54,11 +51,8 @@
         }
 
         /**
-         *
          * Returns all the authors
-         *
          * @return Array<Author>
-         *
          */
         public static function getAuthors() {
             try {
