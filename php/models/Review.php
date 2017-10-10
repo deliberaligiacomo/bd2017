@@ -58,7 +58,8 @@
          * @param integer $bookId The option book id (for the form rendering)
          */
         public function __construct($bookId = null) {
-            $this->id_book = $bookId;
+            if ($bookId)
+                $this->id_book = $bookId;
         }
 
         /**
@@ -78,7 +79,11 @@
                     </button>
                 ';
             }
-            echo '</div>
+            echo '<a class="btn btn btn-outline-success" href="' . Defaults::DEFAULT_BASE_URL . '/php/rest/add-grade.php?type=review&grade=' . Defaults::SCORE_UP . '&userId=' . AuthenticationService::getUserId() . '&reviewId=' . $this->id_review . '&prevUrl=' . $_SERVER["REQUEST_URI"] . '"><i class="fa fa-thumbs-o-up"></i></a>
+                  <a class="btn btn btn-outline-danger" href="' . Defaults::DEFAULT_BASE_URL . '/php/rest/add-grade.php?type=review&grade=' . Defaults::SCORE_DOWN . '&userId=' . AuthenticationService::getUserId() . '&reviewId=' . $this->id_review . '&prevUrl=' . $_SERVER["REQUEST_URI"] . '"><i class="fa fa-thumbs-o-down"></i></a>
+                  <a class="btn btn btn-outline-primary" href="' . Defaults::DEFAULT_BASE_URL . '/php/rest/add-grade.php?type=review&grade=' . Defaults::SCORE_REMOVE . '&userId=' . AuthenticationService::getUserId() . '&reviewId=' . $this->id_review . '&prevUrl=' . $_SERVER["REQUEST_URI"] . '"><i class="fa fa-times"></i></a>
+                  <a class="btn btn btn-outline-primary">' . $this->score . '</a>
+                    </div>
                             <div class="review-block-title">' . $this->title . '</div>
                             <div class="review-block-description">' . $this->text . '</div>
                     </div>

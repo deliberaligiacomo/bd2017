@@ -94,6 +94,70 @@
         }
 
         /**
+         * Adds a review grade (+1/-1)
+         * @param integer $reviewId The review id         
+         * @param integer $userId The user id
+         * @param integer $grade The grade
+         * @return boolean
+         */
+        public static function addReviewGrade($reviewId, $userId, $grade) {
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+
+                $statement = $dbconn->prepare('
+                SELECT *
+                FROM 
+                    grades_reviews
+                WHERE 
+                        id_user = :userId
+                        AND
+                        id_review = :reviewId
+                ');
+                $statement->bindParam(":userId", $userId, PDO::PARAM_INT);
+                $statement->bindParam(":reviewId", $reviewId, PDO::PARAM_INT);
+                $statement->execute();
+                $isExisting = $statement->rowCount() == 1;
+
+                if ($isExisting) {
+                    $currentValue = $statement->fetchAll()[0]["grade"];
+                    $statement = $dbconn->prepare('
+                        UPDATE
+                            grades_reviews
+                        SET
+                            grade = :grade
+                        WHERE 
+                                id_user = :userId
+                                AND
+                                id_review = :reviewId
+                    ');
+                    $statement->bindParam(":userId", $userId, PDO::PARAM_INT);
+                    $statement->bindParam(":reviewId", $reviewId, PDO::PARAM_INT);
+                    $statement->bindParam(":grade", $grade, PDO::PARAM_INT);
+                    $statement->execute();
+                    return $statement->rowCount() == 1;
+                }
+
+                // ELSE NEW GRADE 
+                $statement = $dbconn->prepare('
+                INSERT INTO grades_reviews VALUES (
+                        :userId,
+                        :reviewId,
+                        :grade
+                    )
+                ');
+                $currentScore = $grade == Defaults::SCORE_DOWN ? -1 : 1;
+                $statement->bindParam(":userId", $userId, PDO::PARAM_INT);
+                $statement->bindParam(":reviewId", $reviewId, PDO::PARAM_INT);
+                $statement->bindParam(":grade", $currentScore, PDO::PARAM_INT);
+                $statement->execute();
+                return $statement->rowCount() == 1;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return false;
+            }
+        }
+
+        /**
          * Given a word returns the book's title (one or more) that contains that word, else returns all the titles
          * @param string keyword The keywork to search
          * @return Array<Book>
@@ -263,11 +327,14 @@
                 $query = '
                         SELECT 
                             reviews.*,
-                            concat_ws(\'\', users.firstname, \' \', users.lastname) as author
+                            concat_ws(\'\', users.firstname, \' \', users.lastname) as author,
+                            SUM(coalesce(grades_reviews.grade,0)) as score
                         FROM 
                             reviews JOIN users ON reviews.id_author = users.id
+                            LEFT JOIN grades_reviews ON reviews.id_review = grades_reviews.id_review
                         WHERE
                             id_book = :bookId
+                        GROUP BY reviews.id_review,author
                     ';
 
                 $statement = $dbconn->prepare($query);

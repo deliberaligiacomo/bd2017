@@ -17,9 +17,7 @@
     }
 
     if ($isReviewAdded && isset($_POST["PrevUrl"])) {
-        header('Location: ' . $_POST["PrevUrl"] . '&reviewAdded=true');
-    } elseif (!$isReviewAdded && isset($_POST["PrevUrl"])) {
-        header('Location: ' . $_POST["PrevUrl"] . '&reviewAdded=false');
+        header('Location: ' . $_POST["PrevUrl"]);
     } else {
         // return on the register page with a GET param
         header('Location: ' . Defaults::DEFAULT_BASE_URL);
