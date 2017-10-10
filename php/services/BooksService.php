@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/AuthenticationService.php');
     require_once(__DIR__ . '/../models/Book.php');
     require_once(__DIR__ . '/../models/Author.php');
+    require_once(__DIR__ . '/../models/Review.php');
 
     /**
      * Provides all Book CRUD operations.
@@ -178,6 +179,76 @@
                 $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
                 $result = $statement->execute();
                 return $result->rowCount() == 1;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
+        }
+
+        /**
+         * 
+         * Gets a Book given its id
+         * @param $bookId integer
+         * @return Book
+         */
+        public static function getBook($bookId) {
+            if ($bookId == null || $bookId < 0) {
+                return null;
+            }
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $query = '
+                        SELECT 
+                            *
+                        FROM 
+                            books
+                        WHERE
+                            id = :bookId
+                    ';
+
+                $statement = $dbconn->prepare($query);
+                $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+                $statement->execute();
+                $books = $statement->fetchAll(PDO::FETCH_CLASS, "Book");
+
+                if (count($books) > 0)
+                    return $books[0];
+
+                return null;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
+        }
+
+        /**
+         * 
+         * Retusn all the reviews of the given book
+         * @param $bookId integer The book id
+         * @return Array<Review>
+         */
+        public static function getReviews($bookId) {
+            if ($bookId == null || $bookId < 0) {
+                return null;
+            }
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $query = '
+                        SELECT 
+                            reviews.*,
+                            concat_ws(\'\', users.firstname, \' \', users.lastname) as author
+                        FROM 
+                            reviews JOIN users ON reviews.id_author = users.id
+                        WHERE
+                            id_book = :bookId
+                    ';
+
+                $statement = $dbconn->prepare($query);
+                $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+                $statement->execute();
+                $reviews = $statement->fetchAll(PDO::FETCH_CLASS, "Review");
+
+                return $reviews;
             } catch (PDOException $e) {
                 LogsService::logException($e);
                 return null;

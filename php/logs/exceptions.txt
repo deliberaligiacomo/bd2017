@@ -1,0 +1,30 @@
+---------------
+2017-10-10 17:51:33
+PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "book_id" does not exist
+LINE 7:                             book_id = $1
+                                    ^ in C:\code\training\bd2017\php\services\BooksService.php:247
+Stack trace:
+#0 C:\code\training\bd2017\php\services\BooksService.php(247): PDOStatement->execute()
+#1 C:\code\training\bd2017\php\book.php(12): BooksService::getReviews('13')
+#2 {main}
+---------------
+---------------
+2017-10-10 17:51:41
+PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "book_id" does not exist
+LINE 7:                             book_id = $1
+                                    ^ in C:\code\training\bd2017\php\services\BooksService.php:247
+Stack trace:
+#0 C:\code\training\bd2017\php\services\BooksService.php(247): PDOStatement->execute()
+#1 C:\code\training\bd2017\php\book.php(12): BooksService::getReviews('13')
+#2 {main}
+---------------
+---------------
+2017-10-10 17:51:59
+PDOException: SQLSTATE[42703]: Undefined column: 7 ERROR:  column "book_id" does not exist
+LINE 7:                             book_id = $1
+                                    ^ in C:\code\training\bd2017\php\services\BooksService.php:247
+Stack trace:
+#0 C:\code\training\bd2017\php\services\BooksService.php(247): PDOStatement->execute()
+#1 C:\code\training\bd2017\php\book.php(12): BooksService::getReviews('13')
+#2 {main}
+---------------

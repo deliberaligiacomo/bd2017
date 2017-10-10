@@ -54,7 +54,7 @@ if (!AuthenticationService::isLoggedIn()) {
                             <div class="col-md-8">
                                 <div class="row">
                                     <div class="col-xs-12">
-                                    <h4>' . $book->title . '<small>&nbsp;' . $book->author . '</small></h4>
+                                    <a href="./php/book.php?id=' . $book->id . '"><h4>' . $book->title . '<small>&nbsp;' . $book->author . '</small></h4></a>
                                     </div>
                                 </div>
                                 <div class="row">
