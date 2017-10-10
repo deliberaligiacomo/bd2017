@@ -10,6 +10,7 @@
 
     $book = BooksService::getBook($_GET["id"]);
     $reviews = BooksService::getReviews($_GET["id"]);
+    $reviewsSummary = BooksService::getBookReviewSummary($_GET["id"]);
 ?>
 
 <!DOCTYPE HTML>
@@ -55,11 +56,11 @@
                 </div>
                 <div class="col-md-6">
                     <?php
-                        include(__DIR__ . '/partials/review-form.php');
+                        $reviewsSummary->getTemplate();
                     ?>
                 </div>
             </div>
-            
+
             <div class="row mt-5">
                 <div class="col-xs-12">
                     <h5>Reviews</h5>
@@ -68,7 +69,7 @@
                             foreach ($reviews as $review) {
                                 $review->getTemplate();
                             }
-                        }else{
+                        } else {
                             include(__DIR__ . '/partials/messages/no-reviews.php');
                         }
                     ?>

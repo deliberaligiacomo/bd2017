@@ -4,6 +4,7 @@
     require_once(__DIR__ . '/../models/Book.php');
     require_once(__DIR__ . '/../models/Author.php');
     require_once(__DIR__ . '/../models/Review.php');
+    require_once(__DIR__ . '/../models/BookReviewSummary.php');
 
     /**
      * Provides all Book CRUD operations.
@@ -223,7 +224,7 @@
 
         /**
          * 
-         * Retusn all the reviews of the given book
+         * Return all the reviews of the given book
          * @param $bookId integer The book id
          * @return Array<Review>
          */
@@ -249,6 +250,48 @@
                 $reviews = $statement->fetchAll(PDO::FETCH_CLASS, "Review");
 
                 return $reviews;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
+        }
+
+        /**
+         * 
+         * Return the book's reviews summary
+         * @param $bookId integer The book id
+         * @return BookReviewSummary
+         */
+        public static function getBookReviewSummary($bookId) {
+            if ($bookId == null || $bookId < 0) {
+                return null;
+            }
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $query = '
+                        SELECT 
+                            COUNT(*) AS total,
+                            ROUND(AVG(grade),1) AS avarage,
+                            coalesce(COUNT(grade) FILTER (WHERE grade = 1),0) AS "oneStar",
+                            coalesce(COUNT(grade) FILTER (WHERE grade = 2),0) AS "twoStar",
+                            coalesce(COUNT(grade) FILTER (WHERE grade = 3),0) AS "threeStar",
+                            coalesce(COUNT(grade) FILTER (WHERE grade = 4),0) AS "fourStar",
+                            coalesce(COUNT(grade) FILTER (WHERE grade = 5),0) AS "fiveStar"
+                        FROM 
+                            reviews
+                        WHERE
+                            reviews.id_book = :bookId
+                    ';
+
+                $statement = $dbconn->prepare($query);
+                $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+                $statement->execute();
+                $reviews = $statement->fetchAll(PDO::FETCH_CLASS, "BookReviewSummary");
+
+                if (count($reviews) > 0)
+                    return $reviews[0];
+
+                return null;
             } catch (PDOException $e) {
                 LogsService::logException($e);
                 return null;
