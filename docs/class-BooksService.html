@@ -27,11 +27,13 @@
 				<li><a href="class-Author.html">Author</a></li>
 				<li><a href="class-AuthorsService.html">AuthorsService</a></li>
 				<li><a href="class-Book.html">Book</a></li>
+				<li><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
 				<li class="active"><a href="class-BooksService.html">BooksService</a></li>
 				<li><a href="class-Database.html">Database</a></li>
 				<li><a href="class-DatabaseConnection.html">DatabaseConnection</a></li>
 				<li><a href="class-Defaults.html">Defaults</a></li>
 				<li><a href="class-LogsService.html">LogsService</a></li>
+				<li><a href="class-Review.html">Review</a></li>
 			</ul>
 
 
@@ -91,7 +93,7 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-BooksService.html#7-187" title="Go to source code">php/services/BooksService.php</a>
+			<b>Located at</b> <a href="source-class-BooksService.html#9-372" title="Go to source code">php/services/BooksService.php</a>
 		<br>
 	</div>
 
@@ -111,7 +113,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addBook">#</a>
-		<code><a href="source-class-BooksService.html#12-59" title="Go to source code">addBook</a>( <span>title <var>$title</var></span>, <span>image <var>$image</var></span>, <span>genre <var>$genre</var></span>, <span>authorId <var>$authorId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#14-61" title="Go to source code">addBook</a>( <span>title <var>$title</var></span>, <span>image <var>$image</var></span>, <span>genre <var>$genre</var></span>, <span>authorId <var>$authorId</var></span> )</code>
 
 		<div class="description short">
 			
@@ -144,6 +146,53 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="addReview" id="_addReview">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_addReview">#</a>
+		<code><a href="source-class-BooksService.html#63-98" title="Go to source code">addReview</a>( <span>string <var>$title</var></span>, <span>string <var>$text</var></span>, <span>integer <var>$grade</var></span>, <span>integer <var>$IdAuthor</var></span>, <span>integer <var>$idBook</var></span> )</code>
+
+		<div class="description short">
+			<p>Adds a new review</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Adds a new review</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$title</var></dt>
+					<dd></dd>
+					<dt><var>$text</var></dt>
+					<dd></dd>
+					<dt><var>$grade</var></dt>
+					<dd></dd>
+					<dt><var>$IdAuthor</var></dt>
+					<dd></dd>
+					<dt><var>$idBook</var></dt>
+					<dd></dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="research" id="_research">
 
 		<td class="attributes"><code>
@@ -156,7 +205,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_research">#</a>
-		<code><a href="source-class-BooksService.html#61-110" title="Go to source code">research</a>( <span>keyword <var>$keyword</var> = <span class="php-keyword1">null</span></span>, <span> <var>$sort</var> = <code><a href="class-Defaults.html#ASC">Defaults::<b>ASC</b></a></code></span> )</code>
+		<code><a href="source-class-BooksService.html#100-149" title="Go to source code">research</a>( <span>keyword <var>$keyword</var> = <span class="php-keyword1">null</span></span>, <span> <var>$sort</var> = <code><a href="class-Defaults.html#ASC">Defaults::<b>ASC</b></a></code></span> )</code>
 
 		<div class="description short">
 			
@@ -197,7 +246,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_listByFeedback">#</a>
-		<code><a href="source-class-BooksService.html#112-156" title="Go to source code">listByFeedback</a>( )</code>
+		<code><a href="source-class-BooksService.html#151-195" title="Go to source code">listByFeedback</a>( )</code>
 
 		<div class="description short">
 			
@@ -231,7 +280,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_deleteBook">#</a>
-		<code><a href="source-class-BooksService.html#158-185" title="Go to source code">deleteBook</a>( <span> <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#197-224" title="Go to source code">deleteBook</a>( <span> <var>$bookId</var></span> )</code>
 
 		<div class="description short">
 			<p>Deletes a Book given its id</p>
@@ -250,6 +299,164 @@
 				<h4>Returns</h4>
 				<div class="list">
 					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBook" id="_getBook">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-Book.html">Book</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBook">#</a>
+		<code><a href="source-class-BooksService.html#226-260" title="Go to source code">getBook</a>( <span> <var>$bookId</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Gets a Book given its id</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$bookId</var></dt>
+					<dd>integer</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-Book.html">Book</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getReviews" id="_getReviews">
+
+		<td class="attributes"><code>
+			 public static
+
+			Array&lt;Review&gt;
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getReviews">#</a>
+		<code><a href="source-class-BooksService.html#262-294" title="Go to source code">getReviews</a>( <span> <var>$bookId</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return all the reviews of the given book</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$bookId</var></dt>
+					<dd>The book id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					Array&lt;Review&gt;
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="hasReview" id="_hasReview">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_hasReview">#</a>
+		<code><a href="source-class-BooksService.html#296-328" title="Go to source code">hasReview</a>( <span>integer <var>$authorId</var></span>, <span>integer <var>$bookId</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns true if the user has already done a review on the specified book</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns true if the user has already done a review on the specified book</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$authorId</var></dt>
+					<dd>The author id</dd>
+					<dt><var>$bookId</var></dt>
+					<dd>The book id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBookReviewSummary" id="_getBookReviewSummary">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-BookReviewSummary.html">BookReviewSummary</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBookReviewSummary">#</a>
+		<code><a href="source-class-BooksService.html#330-370" title="Go to source code">getBookReviewSummary</a>( <span> <var>$bookId</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Return the book's reviews summary</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$bookId</var></dt>
+					<dd>The book id</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-BookReviewSummary.html">BookReviewSummary</a></code>
 				</div>
 
 

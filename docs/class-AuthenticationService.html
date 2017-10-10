@@ -27,11 +27,13 @@
 				<li><a href="class-Author.html">Author</a></li>
 				<li><a href="class-AuthorsService.html">AuthorsService</a></li>
 				<li><a href="class-Book.html">Book</a></li>
+				<li><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
 				<li><a href="class-BooksService.html">BooksService</a></li>
 				<li><a href="class-Database.html">Database</a></li>
 				<li><a href="class-DatabaseConnection.html">DatabaseConnection</a></li>
 				<li><a href="class-Defaults.html">Defaults</a></li>
 				<li><a href="class-LogsService.html">LogsService</a></li>
+				<li><a href="class-Review.html">Review</a></li>
 			</ul>
 
 
@@ -91,7 +93,7 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-AuthenticationService.html#9-95" title="Go to source code">php/services/AuthenticationService.php</a>
+			<b>Located at</b> <a href="source-class-AuthenticationService.html#8-112" title="Go to source code">php/services/AuthenticationService.php</a>
 		<br>
 	</div>
 
@@ -111,7 +113,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_login">#</a>
-		<code><a href="source-class-AuthenticationService.html#14-43" title="Go to source code">login</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span> )</code>
+		<code><a href="source-class-AuthenticationService.html#13-44" title="Go to source code">login</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span> )</code>
 
 		<div class="description short">
 			
@@ -152,7 +154,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isLoggedIn">#</a>
-		<code><a href="source-class-AuthenticationService.html#45-54" title="Go to source code">isLoggedIn</a>( )</code>
+		<code><a href="source-class-AuthenticationService.html#46-55" title="Go to source code">isLoggedIn</a>( )</code>
 
 		<div class="description short">
 			
@@ -174,6 +176,74 @@
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="getUsername" id="_getUsername">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUsername">#</a>
+		<code><a href="source-class-AuthenticationService.html#57-63" title="Go to source code">getUsername</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the current logged in user username or null</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the current logged in user username or null</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getUserId" id="_getUserId">
+
+		<td class="attributes"><code>
+			 public static
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getUserId">#</a>
+		<code><a href="source-class-AuthenticationService.html#65-71" title="Go to source code">getUserId</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the current logged in user id or null</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the current logged in user id or null</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					integer
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="register" id="_register">
 
 		<td class="attributes"><code>
@@ -186,7 +256,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_register">#</a>
-		<code><a href="source-class-AuthenticationService.html#56-93" title="Go to source code">register</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span>, <span>firstName <var>$firstName</var></span>, <span>lastName <var>$lastName</var></span>, <span>email <var>$email</var></span>, <span>birthdate <var>$birthdate</var></span> )</code>
+		<code><a href="source-class-AuthenticationService.html#73-110" title="Go to source code">register</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span>, <span>firstName <var>$firstName</var></span>, <span>lastName <var>$lastName</var></span>, <span>email <var>$email</var></span>, <span>birthdate <var>$birthdate</var></span> )</code>
 
 		<div class="description short">
 			

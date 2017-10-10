@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Book | bd2017</title>
+	<title>Class BookReviewSummary | bd2017</title>
 
 	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
 
@@ -26,8 +26,8 @@
 				<li><a href="class-AuthenticationService.html">AuthenticationService</a></li>
 				<li><a href="class-Author.html">Author</a></li>
 				<li><a href="class-AuthorsService.html">AuthorsService</a></li>
-				<li class="active"><a href="class-Book.html">Book</a></li>
-				<li><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
+				<li><a href="class-Book.html">Book</a></li>
+				<li class="active"><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
 				<li><a href="class-BooksService.html">BooksService</a></li>
 				<li><a href="class-Database.html">Database</a></li>
 				<li><a href="class-DatabaseConnection.html">DatabaseConnection</a></li>
@@ -72,11 +72,11 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Book</h1>
+	<h1>Class BookReviewSummary</h1>
 
 
 	<div class="description">
-	<p>A Book</p>
+	<p>A Book review summary</p>
 	</div>
 
 
@@ -93,12 +93,45 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-Book.html#3-44" title="Go to source code">php/models/Book.php</a>
+			<b>Located at</b> <a href="source-class-BookReviewSummary.html#3-141" title="Go to source code">php/models/BookReviewSummary.php</a>
 		<br>
 	</div>
 
 
 
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="render" id="_render">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_render">#</a>
+		<code><a href="source-class-BookReviewSummary.html#50-139" title="Go to source code">render</a>( )</code>
+
+		<div class="description short">
+			<p>Renders the HTML for the current item</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Renders the HTML for the current item</p>
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
 
 
 
@@ -113,152 +146,177 @@
 
 	<table class="summary properties" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="id" id="$id">
+	<tr data-order="total" id="$total">
 		<td class="attributes"><code>
 			public  
-			type
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#8-12" title="Go to source code"><var>$id</var></a>
+				<a href="source-class-BookReviewSummary.html#8-12" title="Go to source code"><var>$total</var></a>
 
 			<div class="description short">
-				<p>The book identifier</p>
+				<p>The total numer of reviews</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The book identifier</p>
+				<p>The total numer of reviews</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$id" class="anchor">#</a>
+				<a href="#$total" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="title" id="$title">
+	<tr data-order="avarage" id="$avarage">
 		<td class="attributes"><code>
 			public  
-			type
+			float
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#14-18" title="Go to source code"><var>$title</var></a>
+				<a href="source-class-BookReviewSummary.html#14-18" title="Go to source code"><var>$avarage</var></a>
 
 			<div class="description short">
-				<p>The book title</p>
+				<p>The avarage value</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The book title</p>
+				<p>The avarage value</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$title" class="anchor">#</a>
+				<a href="#$avarage" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="image" id="$image">
+	<tr data-order="oneStar" id="$oneStar">
 		<td class="attributes"><code>
 			public  
-			type
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#20-24" title="Go to source code"><var>$image</var></a>
+				<a href="source-class-BookReviewSummary.html#20-24" title="Go to source code"><var>$oneStar</var></a>
 
 			<div class="description short">
-				<p>The book image url</p>
+				<p>The number of reviews with one star</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The book image url</p>
+				<p>The number of reviews with one star</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$image" class="anchor">#</a>
+				<a href="#$oneStar" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="genre" id="$genre">
+	<tr data-order="twoStar" id="$twoStar">
 		<td class="attributes"><code>
 			public  
-			type
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#26-30" title="Go to source code"><var>$genre</var></a>
+				<a href="source-class-BookReviewSummary.html#26-30" title="Go to source code"><var>$twoStar</var></a>
 
 			<div class="description short">
-				<p>The book genre</p>
+				<p>The number of reviews with two star</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The book genre</p>
+				<p>The number of reviews with two star</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$genre" class="anchor">#</a>
+				<a href="#$twoStar" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="rating" id="$rating">
+	<tr data-order="threeStar" id="$threeStar">
 		<td class="attributes"><code>
 			public  
-			type
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#32-36" title="Go to source code"><var>$rating</var></a>
+				<a href="source-class-BookReviewSummary.html#32-36" title="Go to source code"><var>$threeStar</var></a>
 
 			<div class="description short">
-				<p>The book rating (number of stars)</p>
+				<p>The number of reviews three two star</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The book rating (number of stars)</p>
+				<p>The number of reviews three two star</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$rating" class="anchor">#</a>
+				<a href="#$threeStar" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="author" id="$author">
+	<tr data-order="fourStar" id="$fourStar">
 		<td class="attributes"><code>
 			public  
-			type
+			integer
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Book.html#38-42" title="Go to source code"><var>$author</var></a>
+				<a href="source-class-BookReviewSummary.html#38-42" title="Go to source code"><var>$fourStar</var></a>
 
 			<div class="description short">
-				<p>The autho's book full name</p>
+				<p>The number of reviews with four star</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The autho's book full name</p>
+				<p>The number of reviews with four star</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$author" class="anchor">#</a>
+				<a href="#$fourStar" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="fiveStar" id="$fiveStar">
+		<td class="attributes"><code>
+			public  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-BookReviewSummary.html#44-48" title="Go to source code"><var>$fiveStar</var></a>
+
+			<div class="description short">
+				<p>The number of reviews with five star</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The number of reviews with five star</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$fiveStar" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
