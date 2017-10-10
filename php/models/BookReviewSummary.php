@@ -47,7 +47,10 @@
          */
         public $fiveStar;
 
-        public function getTemplate() {
+        /**
+         * Renders the HTML for the current item
+         */
+        public function render() {
             $currentTotal = $this->total || 1;
             
             echo '

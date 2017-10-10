@@ -61,6 +61,43 @@
         }
 
         /**
+         * Adds a new review
+         * 
+         * @param string $title
+         * @param string $text
+         * @param integer $grade
+         * @param integer $IdAuthor
+         * @param integer $idBook
+         * @return boolean
+         */
+        public static function addReview($title, $text, $grade, $IdAuthor, $idBook) {
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $statement = $dbconn->prepare('
+                INSERT INTO reviews VALUES (
+                        DEFAULT,
+                        :title,
+                        :text,
+                        :grade,
+                        0,
+                        :idAuthor,
+                        :idBook
+                    )
+                ');
+                $statement->bindParam(":title", $title, PDO::PARAM_STR);
+                $statement->bindParam(":text", $text, PDO::PARAM_STR);
+                $statement->bindParam(":grade", $grade, PDO::PARAM_INT);
+                $statement->bindParam(":idAuthor", $IdAuthor, PDO::PARAM_INT);
+                $statement->bindParam(":idBook", $idBook, PDO::PARAM_INT);
+                $statement->execute();
+                return $statement->rowCount() == 1;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return false;
+            }
+        }
+
+        /**
          *
          * Given a word returns the book's title (one or more) that contains that word, else returns all the titles
          *
@@ -250,6 +287,40 @@
                 $reviews = $statement->fetchAll(PDO::FETCH_CLASS, "Review");
 
                 return $reviews;
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
+        }
+
+        /**
+         * Returns true if the user has already done a review on the specified book
+         * @param integer $authorId The author id
+         * @param integer $bookId The book id
+         * @return boolean
+         */
+        public static function hasReview($authorId, $bookId) {
+            if ($bookId == null || $bookId < 0 || $authorId == null || $authorId < 0) {
+                return null;
+            }
+            try {
+                $dbconn = Database::getInstance()->getConnection();
+                $query = '
+                        SELECT 
+                            *
+                        FROM 
+                            reviews JOIN users ON reviews.id_author = users.id
+                        WHERE
+                            id_book = :bookId
+                                AND
+                            id_author = :authorId
+                    ';
+
+                $statement = $dbconn->prepare($query);
+                $statement->bindParam(":bookId", $bookId, PDO::PARAM_INT);
+                $statement->bindParam(":authorId", $authorId, PDO::PARAM_INT);
+                $statement->execute();
+                return $statement->rowCount() == 1;
             } catch (PDOException $e) {
                 LogsService::logException($e);
                 return null;
