@@ -93,7 +93,7 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-AuthenticationService.html#8-112" title="Go to source code">php/services/AuthenticationService.php</a>
+			<b>Located at</b> <a href="source-class-AuthenticationService.html#8-105" title="Go to source code">php/services/AuthenticationService.php</a>
 		<br>
 	</div>
 
@@ -113,10 +113,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_login">#</a>
-		<code><a href="source-class-AuthenticationService.html#13-44" title="Go to source code">login</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span> )</code>
+		<code><a href="source-class-AuthenticationService.html#13-42" title="Go to source code">login</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Given a username and a MD5 password returns true if a user with the given credentials exisits or not.</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -126,9 +126,9 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$username</var></dt>
-					<dd>user username</dd>
+					<dd>The user username</dd>
 					<dt><var>$password</var></dt>
-					<dd>user password (in MD5)</dd>
+					<dd>The user password (in MD5)</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -154,10 +154,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_isLoggedIn">#</a>
-		<code><a href="source-class-AuthenticationService.html#46-55" title="Go to source code">isLoggedIn</a>( )</code>
+		<code><a href="source-class-AuthenticationService.html#44-50" title="Go to source code">isLoggedIn</a>( )</code>
 
 		<div class="description short">
-			
+			<p>Returns true if a session username exisits, false othwrwise.</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -188,7 +188,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUsername">#</a>
-		<code><a href="source-class-AuthenticationService.html#57-63" title="Go to source code">getUsername</a>( )</code>
+		<code><a href="source-class-AuthenticationService.html#52-58" title="Go to source code">getUsername</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the current logged in user username or null</p>
@@ -222,7 +222,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getUserId">#</a>
-		<code><a href="source-class-AuthenticationService.html#65-71" title="Go to source code">getUserId</a>( )</code>
+		<code><a href="source-class-AuthenticationService.html#60-66" title="Go to source code">getUserId</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the current logged in user id or null</p>
@@ -256,10 +256,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_register">#</a>
-		<code><a href="source-class-AuthenticationService.html#73-110" title="Go to source code">register</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span>, <span>firstName <var>$firstName</var></span>, <span>lastName <var>$lastName</var></span>, <span>email <var>$email</var></span>, <span>birthdate <var>$birthdate</var></span> )</code>
+		<code><a href="source-class-AuthenticationService.html#68-103" title="Go to source code">register</a>( <span>string <var>$username</var></span>, <span>string <var>$password</var></span>, <span>string <var>$firstName</var></span>, <span>string <var>$lastName</var></span>, <span>string <var>$email</var></span>, <span>string <var>$birthdate</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Register a new user</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -269,17 +269,17 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$username</var></dt>
-					<dd>user username</dd>
+					<dd>The user username</dd>
 					<dt><var>$password</var></dt>
-					<dd>user password (in MD5)</dd>
+					<dd>The user password (in MD5)</dd>
 					<dt><var>$firstName</var></dt>
-					<dd>user name</dd>
+					<dd>The user name</dd>
 					<dt><var>$lastName</var></dt>
-					<dd>user surname</dd>
+					<dd>The user surname</dd>
 					<dt><var>$email</var></dt>
-					<dd>user email</dd>
+					<dd>The user email</dd>
 					<dt><var>$birthdate</var></dt>
-					<dd>user birthdate</dd>
+					<dd>The user birthdate</dd>
 				</dl></div>
 
 				<h4>Returns</h4>

@@ -93,7 +93,7 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-BooksService.html#9-372" title="Go to source code">php/services/BooksService.php</a>
+			<b>Located at</b> <a href="source-class-BooksService.html#9-361" title="Go to source code">php/services/BooksService.php</a>
 		<br>
 	</div>
 
@@ -113,10 +113,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addBook">#</a>
-		<code><a href="source-class-BooksService.html#14-61" title="Go to source code">addBook</a>( <span>title <var>$title</var></span>, <span>image <var>$image</var></span>, <span>genre <var>$genre</var></span>, <span>authorId <var>$authorId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#14-58" title="Go to source code">addBook</a>( <span>string <var>$title</var></span>, <span>string <var>$image</var></span>, <span>string <var>$genre</var></span>, <span>integer <var>$authorId</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Adds a new book</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -126,13 +126,13 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$title</var></dt>
-					<dd>book title</dd>
+					<dd>The book title</dd>
 					<dt><var>$image</var></dt>
-					<dd>book image url</dd>
+					<dd>The book image url</dd>
 					<dt><var>$genre</var></dt>
-					<dd>book genre</dd>
+					<dd>The book genre</dd>
 					<dt><var>$authorId</var></dt>
-					<dd>book authorId</dd>
+					<dd>The book authorId</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -158,7 +158,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addReview">#</a>
-		<code><a href="source-class-BooksService.html#63-98" title="Go to source code">addReview</a>( <span>string <var>$title</var></span>, <span>string <var>$text</var></span>, <span>integer <var>$grade</var></span>, <span>integer <var>$IdAuthor</var></span>, <span>integer <var>$idBook</var></span> )</code>
+		<code><a href="source-class-BooksService.html#60-94" title="Go to source code">addReview</a>( <span>string <var>$title</var></span>, <span>string <var>$text</var></span>, <span>integer <var>$grade</var></span>, <span>integer <var>$IdAuthor</var></span>, <span>integer <var>$idBook</var></span> )</code>
 
 		<div class="description short">
 			<p>Adds a new review</p>
@@ -205,10 +205,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_research">#</a>
-		<code><a href="source-class-BooksService.html#100-149" title="Go to source code">research</a>( <span>keyword <var>$keyword</var> = <span class="php-keyword1">null</span></span>, <span> <var>$sort</var> = <code><a href="class-Defaults.html#ASC">Defaults::<b>ASC</b></a></code></span> )</code>
+		<code><a href="source-class-BooksService.html#96-142" title="Go to source code">research</a>( <span>string <var>$keyword</var> = <span class="php-keyword1">null</span></span>, <span> <var>$sort</var> = <code><a href="class-Defaults.html#ASC">Defaults::<b>ASC</b></a></code></span> )</code>
 
 		<div class="description short">
-			
+			<p>Given a word returns the book's title (one or more) that contains that word, else returns all the titles</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -218,7 +218,7 @@
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$keyword</var></dt>
-					<dd>keywork to search</dd>
+					<dd>The keywork to search</dd>
 					<dt><var>$sort</var></dt>
 					<dd></dd>
 				</dl></div>
@@ -246,10 +246,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_listByFeedback">#</a>
-		<code><a href="source-class-BooksService.html#151-195" title="Go to source code">listByFeedback</a>( )</code>
+		<code><a href="source-class-BooksService.html#144-185" title="Go to source code">listByFeedback</a>( )</code>
 
 		<div class="description short">
-			
+			<p>Returns the list of books ordered by feedback, starting from the highliest rated</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -280,7 +280,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_deleteBook">#</a>
-		<code><a href="source-class-BooksService.html#197-224" title="Go to source code">deleteBook</a>( <span> <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#187-214" title="Go to source code">deleteBook</a>( <span>integer <var>$bookId</var></span> )</code>
 
 		<div class="description short">
 			<p>Deletes a Book given its id</p>
@@ -319,10 +319,10 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBook">#</a>
-		<code><a href="source-class-BooksService.html#226-260" title="Go to source code">getBook</a>( <span> <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#216-249" title="Go to source code">getBook</a>( <span> <var>$bookId</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Gets a Book given its id</p>
 		</div>
 
 		<div class="description detailed hidden">
@@ -358,7 +358,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getReviews">#</a>
-		<code><a href="source-class-BooksService.html#262-294" title="Go to source code">getReviews</a>( <span> <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#251-283" title="Go to source code">getReviews</a>( <span> <var>$bookId</var></span> )</code>
 
 		<div class="description short">
 			
@@ -397,7 +397,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_hasReview">#</a>
-		<code><a href="source-class-BooksService.html#296-328" title="Go to source code">hasReview</a>( <span>integer <var>$authorId</var></span>, <span>integer <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#285-317" title="Go to source code">hasReview</a>( <span>integer <var>$authorId</var></span>, <span>integer <var>$bookId</var></span> )</code>
 
 		<div class="description short">
 			<p>Returns true if the user has already done a review on the specified book</p>
@@ -438,7 +438,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getBookReviewSummary">#</a>
-		<code><a href="source-class-BooksService.html#330-370" title="Go to source code">getBookReviewSummary</a>( <span> <var>$bookId</var></span> )</code>
+		<code><a href="source-class-BooksService.html#319-359" title="Go to source code">getBookReviewSummary</a>( <span> <var>$bookId</var></span> )</code>
 
 		<div class="description short">
 			
