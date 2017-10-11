@@ -163,17 +163,21 @@
          * @return Array<Book>
          */
         public static function research($keyword = null, $sort = Defaults::DESC) {
-//            try {
+            try {
+                if (!isset($keyword))
+                    $keyword = null;
+                if (!isset($sort))
+                    $sort = Defaults::DESC;
+
                 $dbconn = Database::getInstance()->getConnection();
-                $key=($keyword ? $keyword : '');
+                $key = ($keyword ? $keyword : '');
                 $query = '
                 SELECT 
                     b.id, 
                     b.title, 
                     b.image, 
                     b.genre, 
-                    a.firstName, 
-                    a.lastName
+                    concat_ws(\'\', a.firstName, \' \', a.lastname) as authorFullname
                 FROM books AS b JOIN 
                     books_authors AS ba ON ba.id_book=b.id LEFT JOIN 
                     authors AS a ON a.id= ba.id_author 
@@ -186,8 +190,8 @@
                     a.lastName
                     ORDER BY b.title ' . $sort;
                 $statement = $dbconn->prepare($query);
-                $statement->bindValue(":key", '%'.$keyword.'%'); 
-                $row=$statement->execute();
+                $statement->bindValue(":key", '%' . $keyword . '%');
+                $row = $statement->execute();
 
                 $books = array();
                 while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
@@ -196,15 +200,15 @@
                     $book->title = $row['title'];
                     $book->image = $row['image'];
                     $book->genre = $row['genre'];
-                    $book->author = $row['firstName'] . ' ' . $row['lastName'];
+                    $book->author = $row['authorfullname'];
                     $book->rating = 0;
                     $books[] = $book;
                 }
                 return $books;
-//            } catch (PDOException $e) {
-//                LogsService::logException($e);
-//                return null;
-//            }
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
         }
 
         /**
