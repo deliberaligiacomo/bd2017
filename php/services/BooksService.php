@@ -163,7 +163,7 @@
          * @return Array<Book>
          */
         public static function research($keyword = null, $sort = Defaults::DESC) {
-//            try {
+            try {
                 $dbconn = Database::getInstance()->getConnection();
                 $key=($keyword ? $keyword : '');
                 $query = '
@@ -201,10 +201,10 @@
                     $books[] = $book;
                 }
                 return $books;
-//            } catch (PDOException $e) {
-//                LogsService::logException($e);
-//                return null;
-//            }
+            } catch (PDOException $e) {
+                LogsService::logException($e);
+                return null;
+            }
         }
 
         /**
