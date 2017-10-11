@@ -45,9 +45,9 @@ if (!AuthenticationService::isLoggedIn()) {
 
                 echo '</div>';
             } else {
-                foreach ($books as $book) {
+                foreach ($books as $key=>$book) {
                     echo '
-                        <div class="row">
+                        <div class="row ' . ($key > 0 ? 'mt-5' : '') . '">
                             <div class="col-md-4">
                                 <img src="' . $book->image . '" height="200"/>
                             </div>
