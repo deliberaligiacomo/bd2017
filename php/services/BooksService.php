@@ -177,11 +177,16 @@
                     b.title, 
                     b.image, 
                     b.genre, 
-                    concat_ws(\'\', a.firstName, \' \', a.lastname) as authorFullname
+                    concat_ws(\'\', a.firstName, \' \', a.lastname) as authorfullname
                 FROM books AS b JOIN 
                     books_authors AS ba ON ba.id_book=b.id LEFT JOIN 
                     authors AS a ON a.id= ba.id_author 
-                WHERE lower(b.title) LIKE lower(:key)
+                WHERE 
+                    lower(b.title) LIKE lower(:key)
+                        OR
+                    lower(a.firstName) LIKE lower(:key)
+                        OR
+                    lower(a.lastname) LIKE lower(:key)
                 GROUP BY b.id, 
                     b.title, 
                     b.image, 
