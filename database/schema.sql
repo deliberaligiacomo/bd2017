@@ -38,8 +38,7 @@ CREATE TABLE reviews
                           id_review SERIAL PRIMARY KEY, 
                           title TEXT NOT NULL, 
                           text TEXT NOT NULL, 
-                          grade      INT NOT NULL, 
-                          score INT NOT NULL DEFAULT 0, 
+                          grade      INT NOT NULL,
                           id_author INT NOT NULL, 
                           id_book  INT NOT NULL
              );
@@ -60,7 +59,6 @@ CREATE TABLE comments
              ( 
                           id_comment SERIAL, 
                           text TEXT NOT NULL, 
-                          score     INT DEFAULT 0, 
                           id_user       INT NOT NULL, 
                           id_review INT NOT NULL, 
                           id_ref_comm   INT, 

@@ -25,7 +25,9 @@
     </head>
     <body>
         <!-- Include navbar section -->
-        <?php require(__DIR__ . '/../php/partials/navbar.php') ?>
+        <?php require(__DIR__ . '/../php/partials/navbar.php') ?>        
+        <?php require(__DIR__ . '/../php/partials/comments.php') ?>
+
         <div class="container">
 
             <?php
@@ -71,7 +73,7 @@
                             $v = new Review($_GET["id"]);
                             $v->renderForm();
                         }
-                        
+
                         if ($reviews) {
                             foreach ($reviews as $review) {
                                 $review->render();

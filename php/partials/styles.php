@@ -10,3 +10,4 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="<?php echo Defaults::DEFAULT_BASE_URL; ?>/assets/styles/custom.css">
 <link rel="stylesheet" href="<?php echo Defaults::DEFAULT_BASE_URL; ?>/assets/styles/reviews.css">
+<link rel="stylesheet" href="<?php echo Defaults::DEFAULT_BASE_URL; ?>/assets/styles/comments.css">
