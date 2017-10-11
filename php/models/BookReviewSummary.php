@@ -51,7 +51,7 @@
          * Renders the HTML for the current item
          */
         public function render() {
-            $currentTotal = $this->total || 1;
+            $currentTotal = $this->total > 0 ? $this->total : 1;
             
             echo '
                 <div class="row">

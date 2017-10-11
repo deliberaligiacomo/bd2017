@@ -90,8 +90,8 @@
         )');
                 $statement->bindParam(":username", $username, PDO::PARAM_STR);
                 $statement->bindParam(":password", $password, PDO::PARAM_STR);
-                $statement->bindParam(":firstName", $name, PDO::PARAM_STR);
-                $statement->bindParam(":lastName", $surname, PDO::PARAM_STR);
+                $statement->bindParam(":firstName", $firstName, PDO::PARAM_STR);
+                $statement->bindParam(":lastName", $lastName, PDO::PARAM_STR);
                 $statement->bindParam(":email", $email, PDO::PARAM_STR);
                 $statement->bindParam(":birthdate", $birthdate, PDO::PARAM_STR);
                 $statement->execute();
