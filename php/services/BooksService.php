@@ -158,7 +158,7 @@
         }
 
         /**
-         * Given a word returns the book's title (one or more) that contains that word, else returns all the titles
+         * Given a word returns the book's title (one or more) that contains that word.
          * @param string keyword The keywork to search
          * @return Array<Book>
          */
