@@ -162,30 +162,32 @@
          * @param string keyword The keywork to search
          * @return Array<Book>
          */
-        public static function research($keyword = null, $sort = Defaults::ASC) {
-            try {
+        public static function research($keyword = null, $sort = Defaults::DESC) {
+//            try {
                 $dbconn = Database::getInstance()->getConnection();
+                $key=($keyword ? $keyword : '');
                 $query = '
                 SELECT 
-                    b.id,
-                    b.title,
-                    b.image,
-                    b.genre,
-                    a.firstName AS authorFirstName,
-                    a.lastName AS authorLastName
-                FROM 
-                    books AS b JOIN
-                    books_authors AS ba ON ba.id_book = b.id 
-                    JOIN authors AS a ON ba.id_author = a.id
-                    ' . ($keyword ? "
-                                        WHERE 
-                                            lower(b.title) LIKE '%' || lower(:keyword) || '%'" : ''
-                        );
+                    b.id, 
+                    b.title, 
+                    b.image, 
+                    b.genre, 
+                    a.firstName, 
+                    a.lastName
+                FROM books AS b JOIN 
+                    books_authors AS ba ON ba.id_book=b.id LEFT JOIN 
+                    authors AS a ON a.id= ba.id_author 
+                WHERE b.title LIKE :key
+                GROUP BY b.id, 
+                    b.title, 
+                    b.image, 
+                    b.genre, 
+                    a.firstName, 
+                    a.lastName
+                    ORDER BY b.title ' . $sort;
                 $statement = $dbconn->prepare($query);
-                if ($keyword)
-                    $statement->bindParam(":keyword", $keyword, PDO::PARAM_STR);
-
-                $statement->execute();
+                $statement->bindValue(":key", '%'.$keyword.'%'); 
+                $row=$statement->execute();
 
                 $books = array();
                 while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
@@ -194,58 +196,15 @@
                     $book->title = $row['title'];
                     $book->image = $row['image'];
                     $book->genre = $row['genre'];
-                    $book->author = $row['authorfirstname'] . ' ' . $row['authorlastname'];
+                    $book->author = $row['firstName'] . ' ' . $row['lastName'];
                     $book->rating = 0;
                     $books[] = $book;
                 }
                 return $books;
-            } catch (PDOException $e) {
-                LogsService::logException($e);
-                return null;
-            }
-        }
-
-        /**
-         * Returns the list of books ordered by feedback, starting from the highliest rated
-         * @param string keyword The keywork to search
-         * @return Array<Book>
-         */
-        public static function listByFeedback() {
-            try {
-                $dbconn = Database::getInstance()->getConnection();
-                $query = '
-                SELECT d.id, 
-                    b.title, 
-                    b.image, 
-                    b.genre, 
-                    a.firstName AS authorFirstName, 
-                    a.lastName AS authorLastName, 
-                    r.text, 
-                    AVG(r.score) AS rating, 
-                    SUM(r.grade)
-                FROM books AS b JOIN 
-                     reviews AS r ON b.id=r.id_book 
-                     JOIN authors AS a ON a.id= r.id_authors
-                GROUP BY b.id
-                ORDER BY DESC';
-                $statement = $dbconn->prepare($query);
-                $statement->execute();
-                $books = array();
-                while (($row = $statement->fetch(PDO::FETCH_ASSOC)) !== false) {
-                    $book = new Book();
-                    $book->id = $row['id'];
-                    $book->title = $row['title'];
-                    $book->image = $row['image'];
-                    $book->genre = $row['genre'];
-                    $book->author = $row['authorfirstname'] . ' ' . $row['authorlastname'];
-                    $book->rating = $row['rating'];
-                    $books[] = $book;
-                }
-                return $books;
-            } catch (PDOException $e) {
-                LogsService::logException($e);
-                return false;
-            }
+//            } catch (PDOException $e) {
+//                LogsService::logException($e);
+//                return null;
+//            }
         }
 
         /**
