@@ -181,7 +181,7 @@
                 FROM books AS b JOIN 
                     books_authors AS ba ON ba.id_book=b.id LEFT JOIN 
                     authors AS a ON a.id= ba.id_author 
-                WHERE b.title LIKE :key
+                WHERE lower(b.title) LIKE lower(:key)
                 GROUP BY b.id, 
                     b.title, 
                     b.image, 
