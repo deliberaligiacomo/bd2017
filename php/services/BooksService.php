@@ -177,10 +177,11 @@
                     b.title, 
                     b.image, 
                     b.genre, 
+                    AVG(r.grade) AS rate,
                     concat_ws(\'\', a.firstName, \' \', a.lastname) as authorfullname
-                FROM books AS b JOIN 
-                    books_authors AS ba ON ba.id_book=b.id LEFT JOIN 
-                    authors AS a ON a.id= ba.id_author 
+                FROM books AS b LEFT JOIN reviews AS r 
+                ON r.id_book=b.id LEFT JOIN authors AS a 
+                ON a.id= r.id_author 
                 WHERE 
                     lower(b.title) LIKE lower(:key)
                         OR
@@ -191,9 +192,8 @@
                     b.title, 
                     b.image, 
                     b.genre, 
-                    a.firstName, 
-                    a.lastName
-                    ORDER BY b.title ' . $sort;
+                    authorfullname
+                    ORDER BY rate ' . $sort;
                 $statement = $dbconn->prepare($query);
                 $statement->bindValue(":key", '%' . $keyword . '%');
                 $row = $statement->execute();
