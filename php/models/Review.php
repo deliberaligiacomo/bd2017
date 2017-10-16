@@ -87,7 +87,7 @@
                             <div class="review-block-title">' . $this->title . '</div>
                             <div class="review-block-description">' . $this->text . '</div>
                                 
-                            <a class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#comments" style="margin-left: calc(100% - 85px);margin-top: 10px;">
+                            <a class="btn btn-outline-primary btn-sm comments-dialog-opener" data-review-id=' . $this->id_review . ' data-toggle="modal" data-target="#comments" style="margin-left: calc(100% - 85px);margin-top: 10px;">
                                 Comments
                             </a>
                     </div>

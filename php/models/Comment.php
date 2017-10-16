@@ -33,7 +33,7 @@
          * The user full name
          * @var string
          */
-        public $userFullname;
+        public $userfullname;
 
         /**
          * The review id
@@ -53,14 +53,9 @@
          */
         public $date_comment;
         
-        /**
-         * The comment level depth (0,1,2,...)
-         * @var integer
-         */
-        public $depth;
         
         /**
-         * The cildren comment of the current comment
+         * The children comment of the current comment
          * @var Array<Comment> 
          */
         public $children;
