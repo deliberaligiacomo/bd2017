@@ -1,17 +1,21 @@
 <?php
-    require_once(__DIR__ . '/services/AuthenticationService.php');
-    require_once(__DIR__ . '/services/Defaults.php');
-    require_once(__DIR__ . '/services/BooksService.php');
+require_once(__DIR__ . '/services/AuthenticationService.php');
+require_once(__DIR__ . '/services/Defaults.php');
+require_once(__DIR__ . '/services/BooksService.php');
+require_once(__DIR__ . '/models/BookReviewSummary.php');
 
 
 
-    if (!AuthenticationService::isLoggedIn() || !isset($_GET["id"]))
-        header("Location:" . Defaults::DEFAULT_BASE_URL);
 
-    $book = BooksService::getBook($_GET["id"]);
-    $reviews = BooksService::getReviews($_GET["id"]);
-    $reviewsSummary = BooksService::getBookReviewSummary($_GET["id"]);
-    $currentUserHasReview = BooksService::hasReview(AuthenticationService::getUserId(), $_GET["id"]);
+if (!AuthenticationService::isLoggedIn() || !isset($_GET["id"]))
+    header("Location:" . Defaults::DEFAULT_BASE_URL);
+
+$book = BooksService::getBook($_GET["id"]);
+$reviews = BooksService::getReviews($_GET["id"]);
+$reviewsSummary = BooksService::getBookReviewSummary($_GET["id"]);
+if (!$reviewsSummary)
+    $reviewsSummary = new BookReviewSummary ();
+$currentUserHasReview = BooksService::hasReview(AuthenticationService::getUserId(), $_GET["id"]);
 ?>
 
 <!DOCTYPE HTML>
@@ -31,10 +35,10 @@
         <div class="container">
 
             <?php
-                if (!$book) {
-                    include(__DIR__ . '/../php/partials/messages/book-not-found.php');
-                    die();
-                }
+            if (!$book) {
+                include(__DIR__ . '/../php/partials/messages/book-not-found.php');
+                die();
+            }
             ?>
 
             <div class="row">
@@ -59,6 +63,7 @@
                 </div>
                 <div class="col-md-6">
                     <?php
+                    if ($reviewsSummary)
                         $reviewsSummary->render();
                     ?>
                 </div>
@@ -69,18 +74,18 @@
                     <h5>Reviews</h5>
 
                     <?php
-                        if (!$currentUserHasReview) {
-                            $v = new Review($_GET["id"]);
-                            $v->renderForm();
-                        }
+                    if (!$currentUserHasReview) {
+                        $v = new Review($_GET["id"]);
+                        $v->renderForm();
+                    }
 
-                        if ($reviews) {
-                            foreach ($reviews as $review) {
-                                $review->render();
-                            }
-                        } else {
-                            include(__DIR__ . '/partials/messages/no-reviews.php');
+                    if ($reviews) {
+                        foreach ($reviews as $review) {
+                            $review->render();
                         }
+                    } else {
+                        include(__DIR__ . '/partials/messages/no-reviews.php');
+                    }
                     ?>
                 </div>
             </div>
