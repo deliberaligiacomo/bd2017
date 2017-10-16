@@ -367,11 +367,11 @@
                         SELECT 
                             COUNT(*) AS total,
                             ROUND(AVG(grade),1) AS avarage,
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 1),0) AS "oneStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 2),0) AS "twoStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 3),0) AS "threeStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 4),0) AS "fourStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 5),0) AS "fiveStar"
+                            COUNT(CASE WHEN grade = 1 THEN grade END) AS "oneStar",
+                            COUNT(CASE WHEN grade = 2 THEN grade END) AS "twoStar",
+                            COUNT(CASE WHEN grade = 3 THEN grade END) AS "threeStar",
+                            COUNT(CASE WHEN grade = 4 THEN grade END) AS "fourStar",
+                            COUNT(CASE WHEN grade = 5 THEN grade END) AS "fiveStar"
                         FROM 
                             reviews
                         WHERE
