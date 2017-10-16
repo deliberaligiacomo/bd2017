@@ -179,21 +179,24 @@
                     b.genre, 
                     AVG(r.grade) AS rate,
                     concat_ws(\'\', a.firstName, \' \', a.lastname) as authorfullname
-                FROM books AS b LEFT JOIN reviews AS r 
-                ON r.id_book=b.id LEFT JOIN authors AS a 
-                ON a.id= r.id_author 
+                FROM 
+                    books AS b JOIN books_authors AS ba 
+                    ON ba.id_book= b.id JOIN authors AS a ON a.id= ba.id_author
+                    LEFT JOIN reviews AS r ON r.id_book=b.id
                 WHERE 
                     lower(b.title) LIKE lower(:key)
                         OR
                     lower(a.firstName) LIKE lower(:key)
                         OR
                     lower(a.lastname) LIKE lower(:key)
-                GROUP BY b.id, 
+                GROUP BY 
+                    b.id, 
                     b.title, 
                     b.image, 
                     b.genre, 
                     authorfullname
-                    ORDER BY rate ' . $sort;
+                ORDER BY 
+                    rate '. $sort . ' NULLS LAST';
                 $statement = $dbconn->prepare($query);
                 $statement->bindValue(":key", '%' . $keyword . '%');
                 $row = $statement->execute();
@@ -367,11 +370,11 @@
                         SELECT 
                             COUNT(*) AS total,
                             ROUND(AVG(grade),1) AS avarage,
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 1),0) AS "oneStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 2),0) AS "twoStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 3),0) AS "threeStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 4),0) AS "fourStar",
-                            coalesce(COUNT(grade) FILTER (WHERE grade = 5),0) AS "fiveStar"
+                            coalesce(COUNT(CASE WHEN grade = 1),0) AS "oneStar",
+                            coalesce(COUNT(CASE WHEN grade = 2),0) AS "twoStar",
+                            coalesce(COUNT(CASE WHEN grade = 3),0) AS "threeStar",
+                            coalesce(COUNT(CASE WHEN grade = 4),0) AS "fourStar",
+                            coalesce(COUNT(CASE WHEN grade = 5),0) AS "fiveStar"
                         FROM 
                             reviews
                         WHERE

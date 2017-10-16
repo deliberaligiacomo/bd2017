@@ -46,25 +46,9 @@ if (!AuthenticationService::isLoggedIn()) {
                 echo '</div>';
             } else {
                 foreach ($books as $key=>$book) {
-                    echo '
-                        <div class="row ' . ($key > 0 ? 'mt-5' : '') . '">
-                            <div class="col-md-4">
-                                <img src="' . $book->image . '" height="200"/>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                    <a href="./php/book.php?id=' . $book->id . '"><h4>' . $book->title . '<small>&nbsp;' . $book->author . '</small></h4></a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                    <i>' . $book->genre . '</i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ';
+                  
+                    $book->render(true);
+                    echo '<div class="spacer-10"> </div>';
                 }
             }
             ?>

@@ -17,3 +17,7 @@ body{
 #searchBox{
     max-width: 300px
 }
+
+.spacer-10 {
+    height: 15px;
+}
