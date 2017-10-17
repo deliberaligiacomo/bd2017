@@ -21,7 +21,7 @@
          * The comment score
          * @var integer
          */
-        public $score;
+        public $score = 0;
 
         /**
          * The user identifier
@@ -59,7 +59,7 @@
          * @var Array<Comment> 
          */
         public $children;
-
+        
     }
 
 ?>

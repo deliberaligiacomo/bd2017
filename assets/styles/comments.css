@@ -1,4 +1,4 @@
-.card.comment{
+.card{
     margin: 10px;
 }
 
@@ -10,4 +10,25 @@
 }
 .card.comment-3{
     margin-left: 150px;
+}
+.card.comment-4{
+    margin-left: 200px;
+}
+.card.comment-5{
+    margin-left: 250px;
+}
+.card.comment-6{
+    margin-left: 300px;
+}
+.card.comment-7{
+    margin-left: 350px;
+}
+.card.comment-8{
+    margin-left: 400px;
+}
+.card.comment-9{
+    margin-left: 450px;
+}
+.card.comment-10{
+    margin-left: 500px;
 }
