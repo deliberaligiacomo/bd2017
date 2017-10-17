@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class AuthenticationService | bd2017</title>
+	<title>Class CommentsService | bd2017</title>
 
 	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
 
@@ -23,14 +23,14 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-AuthenticationService.html">AuthenticationService</a></li>
+				<li><a href="class-AuthenticationService.html">AuthenticationService</a></li>
 				<li><a href="class-Author.html">Author</a></li>
 				<li><a href="class-AuthorsService.html">AuthorsService</a></li>
 				<li><a href="class-Book.html">Book</a></li>
 				<li><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
 				<li><a href="class-BooksService.html">BooksService</a></li>
 				<li><a href="class-Comment.html">Comment</a></li>
-				<li><a href="class-CommentsService.html">CommentsService</a></li>
+				<li class="active"><a href="class-CommentsService.html">CommentsService</a></li>
 				<li><a href="class-Database.html">Database</a></li>
 				<li><a href="class-DatabaseConnection.html">DatabaseConnection</a></li>
 				<li><a href="class-Defaults.html">Defaults</a></li>
@@ -74,11 +74,11 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class AuthenticationService</h1>
+	<h1>Class CommentsService</h1>
 
 
 	<div class="description">
-	<p>Provides base methods for authenticating the users and all user CRUD operations.</p>
+	<p>Provides all Comments CRUD operations.</p>
 	</div>
 
 
@@ -95,7 +95,7 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-AuthenticationService.html#8-124" title="Go to source code">php/services/AuthenticationService.php</a>
+			<b>Located at</b> <a href="source-class-CommentsService.html#6-259" title="Go to source code">php/services/CommentsService.php</a>
 		<br>
 	</div>
 
@@ -103,7 +103,41 @@
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="login" id="_login">
+	<tr data-order="getCommentsByReviewId" id="_getCommentsByReviewId">
+
+		<td class="attributes"><code>
+			 public static
+
+			Array&lt;Comment&gt;
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getCommentsByReviewId">#</a>
+		<code><a href="source-class-CommentsService.html#11-51" title="Go to source code">getCommentsByReviewId</a>( <span> <var>$reviewId</var></span> )</code>
+
+		<div class="description short">
+			<p>Returns all the comments of a review (in a hierarcic tree)</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns all the comments of a review (in a hierarcic tree)</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					Array&lt;Comment&gt;
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="addComment" id="_addComment">
 
 		<td class="attributes"><code>
 			 public static
@@ -114,23 +148,21 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_login">#</a>
-		<code><a href="source-class-AuthenticationService.html#13-53" title="Go to source code">login</a>( <span>username <var>$username</var></span>, <span>password <var>$password</var></span> )</code>
+		<a class="anchor" href="#_addComment">#</a>
+		<code><a href="source-class-CommentsService.html#53-86" title="Go to source code">addComment</a>( <span><code><a href="class-Comment.html">Comment</a></code> <var>$comment</var></span> )</code>
 
 		<div class="description short">
-			<p>Given a username and a MD5 password returns true if a user with the given credentials exisits or not.</p>
+			<p>Add a new comment</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Given a username and a MD5 password returns true if a user with the given credentials exisits or not.</p>
+			<p>Add a new comment</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$username</var></dt>
-					<dd>The user username</dd>
-					<dt><var>$password</var></dt>
-					<dd>The user password (in MD5)</dd>
+					<dt><var>$comment</var></dt>
+					<dd></dd>
 				</dl></div>
 
 				<h4>Returns</h4>
@@ -144,7 +176,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="isLoggedIn" id="_isLoggedIn">
+	<tr data-order="deleteAuthor" id="_deleteAuthor">
 
 		<td class="attributes"><code>
 			 public static
@@ -155,17 +187,22 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_isLoggedIn">#</a>
-		<code><a href="source-class-AuthenticationService.html#55-61" title="Go to source code">isLoggedIn</a>( )</code>
+		<a class="anchor" href="#_deleteAuthor">#</a>
+		<code><a href="source-class-CommentsService.html#88-115" title="Go to source code">deleteAuthor</a>( <span>integer <var>$commentId</var></span> )</code>
 
 		<div class="description short">
-			<p>Returns true if a session username exisits, false othwrwise.</p>
+			<p>Deletes a comment and all its children, given its id</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns true if a session username exisits, false othwrwise.</p>
+			<p>Deletes a comment and all its children, given its id</p>
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$commentId</var></dt>
+					<dd></dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -178,32 +215,37 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getUsername" id="_getUsername">
+	<tr data-order="getCommentsByParentId" id="_getCommentsByParentId">
 
 		<td class="attributes"><code>
 			 public static
 
-			string
+			Array&lt;Comment&gt;
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getUsername">#</a>
-		<code><a href="source-class-AuthenticationService.html#63-69" title="Go to source code">getUsername</a>( )</code>
+		<a class="anchor" href="#_getCommentsByParentId">#</a>
+		<code><a href="source-class-CommentsService.html#117-159" title="Go to source code">getCommentsByParentId</a>( <span>integer <var>$parentId</var></span> )</code>
 
 		<div class="description short">
-			<p>Returns the current logged in user username or null</p>
+			<p>Given a parent id comment, return all the hierarchic tree</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns the current logged in user username or null</p>
+			<p>Given a parent id comment, return all the hierarchic tree</p>
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$parentId</var></dt>
+					<dd></dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					string
+					Array&lt;Comment&gt;
 				</div>
 
 
@@ -212,32 +254,41 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getFullName" id="_getFullName">
+	<tr data-order="addCommentGrade" id="_addCommentGrade">
 
 		<td class="attributes"><code>
 			 public static
 
-			string
+			boolean
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getFullName">#</a>
-		<code><a href="source-class-AuthenticationService.html#71-77" title="Go to source code">getFullName</a>( )</code>
+		<a class="anchor" href="#_addCommentGrade">#</a>
+		<code><a href="source-class-CommentsService.html#161-228" title="Go to source code">addCommentGrade</a>( <span>integer <var>$commentId</var></span>, <span>integer <var>$userId</var></span>, <span>integer <var>$grade</var></span> )</code>
 
 		<div class="description short">
-			<p>Returns the current logged in user fullname or null</p>
+			<p>Adds a comment grade (+1/-1)</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns the current logged in user fullname or null</p>
+			<p>Adds a comment grade (+1/-1)</p>
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$commentId</var></dt>
+					<dd>The comment id</dd>
+					<dt><var>$userId</var></dt>
+					<dd>The user id</dd>
+					<dt><var>$grade</var></dt>
+					<dd>The grade</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					string
+					boolean
 				</div>
 
 
@@ -246,7 +297,7 @@
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getUserId" id="_getUserId">
+	<tr data-order="getScore" id="_getScore">
 
 		<td class="attributes"><code>
 			 public static
@@ -257,70 +308,26 @@
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getUserId">#</a>
-		<code><a href="source-class-AuthenticationService.html#79-85" title="Go to source code">getUserId</a>( )</code>
+		<a class="anchor" href="#_getScore">#</a>
+		<code><a href="source-class-CommentsService.html#230-257" title="Go to source code">getScore</a>( <span>integer <var>$commentId</var></span> )</code>
 
 		<div class="description short">
-			<p>Returns the current logged in user id or null</p>
+			<p>Return the score of the given comment</p>
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns the current logged in user id or null</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					integer
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="register" id="_register">
-
-		<td class="attributes"><code>
-			 public static
-
-			boolean
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_register">#</a>
-		<code><a href="source-class-AuthenticationService.html#87-122" title="Go to source code">register</a>( <span>string <var>$username</var></span>, <span>string <var>$password</var></span>, <span>string <var>$firstName</var></span>, <span>string <var>$lastName</var></span>, <span>string <var>$email</var></span>, <span>string <var>$birthdate</var></span> )</code>
-
-		<div class="description short">
-			<p>Register a new user</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Register a new user</p>
+			<p>Return the score of the given comment</p>
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$username</var></dt>
-					<dd>The user username</dd>
-					<dt><var>$password</var></dt>
-					<dd>The user password (in MD5)</dd>
-					<dt><var>$firstName</var></dt>
-					<dd>The user name</dd>
-					<dt><var>$lastName</var></dt>
-					<dd>The user surname</dd>
-					<dt><var>$email</var></dt>
-					<dd>The user email</dd>
-					<dt><var>$birthdate</var></dt>
-					<dd>The user birthdate</dd>
+					<dt><var>$commentId</var></dt>
+					<dd></dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					boolean
+					integer
 				</div>
 
 

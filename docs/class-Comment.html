@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class Review | bd2017</title>
+	<title>Class Comment | bd2017</title>
 
 	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
 
@@ -29,13 +29,13 @@
 				<li><a href="class-Book.html">Book</a></li>
 				<li><a href="class-BookReviewSummary.html">BookReviewSummary</a></li>
 				<li><a href="class-BooksService.html">BooksService</a></li>
-				<li><a href="class-Comment.html">Comment</a></li>
+				<li class="active"><a href="class-Comment.html">Comment</a></li>
 				<li><a href="class-CommentsService.html">CommentsService</a></li>
 				<li><a href="class-Database.html">Database</a></li>
 				<li><a href="class-DatabaseConnection.html">DatabaseConnection</a></li>
 				<li><a href="class-Defaults.html">Defaults</a></li>
 				<li><a href="class-LogsService.html">LogsService</a></li>
-				<li class="active"><a href="class-Review.html">Review</a></li>
+				<li><a href="class-Review.html">Review</a></li>
 			</ul>
 
 
@@ -74,11 +74,11 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Review</h1>
+	<h1>Class Comment</h1>
 
 
 	<div class="description">
-	<p>A book review</p>
+	<p>A Comment</p>
 	</div>
 
 
@@ -95,110 +95,12 @@
 		
 		
 
-			<b>Located at</b> <a href="source-class-Review.html#3-154" title="Go to source code">php/models/Review.php</a>
+			<b>Located at</b> <a href="source-class-Comment.html#3-63" title="Go to source code">php/models/Comment.php</a>
 		<br>
 	</div>
 
 
 
-	<table class="summary methods" id="methods">
-	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Review.html#56-63" title="Go to source code">__construct</a>( <span>integer <var>$bookId</var> = <span class="php-keyword1">null</span></span> )</code>
-
-		<div class="description short">
-			<p>Constructor</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Constructor</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$bookId</var></dt>
-					<dd>The option book id (for the form rendering)</dd>
-				</dl></div>
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="render" id="_render">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_render">#</a>
-		<code><a href="source-class-Review.html#65-97" title="Go to source code">render</a>( )</code>
-
-		<div class="description short">
-			<p>Renders the template of the current element</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Renders the template of the current element</p>
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="renderForm" id="_renderForm">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_renderForm">#</a>
-		<code><a href="source-class-Review.html#99-152" title="Go to source code">renderForm</a>( )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	</table>
 
 
 
@@ -213,6 +115,131 @@
 
 	<table class="summary properties" id="properties">
 	<caption>Properties summary</caption>
+	<tr data-order="id_comment" id="$id_comment">
+		<td class="attributes"><code>
+			public  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#8-12" title="Go to source code"><var>$id_comment</var></a>
+
+			<div class="description short">
+				<p>The comment identifier</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The comment identifier</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$id_comment" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="text" id="$text">
+		<td class="attributes"><code>
+			public  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#14-18" title="Go to source code"><var>$text</var></a>
+
+			<div class="description short">
+				<p>The text content</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The text content</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$text" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="score" id="$score">
+		<td class="attributes"><code>
+			public  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#20-24" title="Go to source code"><var>$score</var></a>
+
+			<div class="description short">
+				<p>The comment score</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The comment score</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$score" class="anchor">#</a>
+				<code><span class="php-num">0</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="id_user" id="$id_user">
+		<td class="attributes"><code>
+			public  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#26-30" title="Go to source code"><var>$id_user</var></a>
+
+			<div class="description short">
+				<p>The user identifier</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The user identifier</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$id_user" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="userfullname" id="$userfullname">
+		<td class="attributes"><code>
+			public  
+			string
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#32-36" title="Go to source code"><var>$userfullname</var></a>
+
+			<div class="description short">
+				<p>The user full name</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The user full name</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$userfullname" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
 	<tr data-order="id_review" id="$id_review">
 		<td class="attributes"><code>
 			public  
@@ -220,7 +247,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Review.html#8-12" title="Go to source code"><var>$id_review</var></a>
+				<a href="source-class-Comment.html#38-42" title="Go to source code"><var>$id_review</var></a>
 
 			<div class="description short">
 				<p>The review id</p>
@@ -238,177 +265,77 @@
 			</div>
 		</td>
 	</tr>
-	<tr data-order="title" id="$title">
+	<tr data-order="id_ref_comm" id="$id_ref_comm">
+		<td class="attributes"><code>
+			public  
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-Comment.html#44-48" title="Go to source code"><var>$id_ref_comm</var></a>
+
+			<div class="description short">
+				<p>The parent comment identifier</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>The parent comment identifier</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$id_ref_comm" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="date_comment" id="$date_comment">
 		<td class="attributes"><code>
 			public  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Review.html#14-18" title="Go to source code"><var>$title</var></a>
+				<a href="source-class-Comment.html#50-54" title="Go to source code"><var>$date_comment</var></a>
 
 			<div class="description short">
-				<p>The review title</p>
+				<p>The comment datetime</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The review title</p>
+				<p>The comment datetime</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$title" class="anchor">#</a>
+				<a href="#$date_comment" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="text" id="$text">
+	<tr data-order="children" id="$children">
 		<td class="attributes"><code>
 			public  
-			string
+			Array&lt;Comment&gt;
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Review.html#20-24" title="Go to source code"><var>$text</var></a>
+				<a href="source-class-Comment.html#57-61" title="Go to source code"><var>$children</var></a>
 
 			<div class="description short">
-				<p>The review text content</p>
+				<p>The children comment of the current comment</p>
 			</div>
 
 			<div class="description detailed hidden">
-				<p>The review text content</p>
+				<p>The children comment of the current comment</p>
 
 			</div>
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$text" class="anchor">#</a>
-				<code></code>
-			</div>
-		</td>
-	</tr>
-	<tr data-order="grade" id="$grade">
-		<td class="attributes"><code>
-			public  
-			integer
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Review.html#26-30" title="Go to source code"><var>$grade</var></a>
-
-			<div class="description short">
-				<p>The review number of stars (1-5)</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>The review number of stars (1-5)</p>
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#$grade" class="anchor">#</a>
-				<code></code>
-			</div>
-		</td>
-	</tr>
-	<tr data-order="score" id="$score">
-		<td class="attributes"><code>
-			public  
-			integer
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Review.html#32-36" title="Go to source code"><var>$score</var></a>
-
-			<div class="description short">
-				<p>The total review score (+1/-1)</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>The total review score (+1/-1)</p>
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#$score" class="anchor">#</a>
-				<code></code>
-			</div>
-		</td>
-	</tr>
-	<tr data-order="id_author" id="$id_author">
-		<td class="attributes"><code>
-			public  
-			integer
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Review.html#38-42" title="Go to source code"><var>$id_author</var></a>
-
-			<div class="description short">
-				<p>The review author's id</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>The review author's id</p>
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#$id_author" class="anchor">#</a>
-				<code></code>
-			</div>
-		</td>
-	</tr>
-	<tr data-order="author" id="$author">
-		<td class="attributes"><code>
-			public  
-			string
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Review.html#44-48" title="Go to source code"><var>$author</var></a>
-
-			<div class="description short">
-				<p>The review author full name</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>The review author full name</p>
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#$author" class="anchor">#</a>
-				<code></code>
-			</div>
-		</td>
-	</tr>
-	<tr data-order="id_book" id="$id_book">
-		<td class="attributes"><code>
-			public  
-			integer
-		</code></td>
-
-		<td class="name">
-				<a href="source-class-Review.html#50-54" title="Go to source code"><var>$id_book</var></a>
-
-			<div class="description short">
-				<p>The review book's id</p>
-			</div>
-
-			<div class="description detailed hidden">
-				<p>The review book's id</p>
-
-			</div>
-		</td>
-		<td class="value">
-			<div>
-				<a href="#$id_book" class="anchor">#</a>
+				<a href="#$children" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
