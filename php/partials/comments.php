@@ -104,7 +104,7 @@
                                 .then(data => data.json())
                                 .then(data =>{
                                     if(data)
-                                         this.comment.score = data.score;
+                                         this.comment.score = data;
                     });
                 },
                 gradeDown(){
@@ -113,7 +113,7 @@
                                 .then(data => data.json())
                                 .then(data =>{
                                     if(data)
-                                         this.comment.score = data.score;
+                                         this.comment.score = data;
                     });
                 },
                 gradeRemove(){
@@ -122,7 +122,7 @@
                                 .then(data => data.json())
                                 .then(data =>{
                                     if(data)
-                                         this.comment.score = data.score;
+                                         this.comment.score = data;
                     });
                 }
             }

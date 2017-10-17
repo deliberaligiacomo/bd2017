@@ -9,7 +9,7 @@
     class CommentsService {
 
         /**
-         * Returns all the comments of a review
+         * Returns all the comments of a review (in a hierarcic tree)
          * @return Array<Comment>
          */
         public static function getCommentsByReviewId($reviewId) {
@@ -227,6 +227,11 @@
             }
         }
 
+        /**
+         * Return the score of the given comment
+         * @param integer $commentId
+         * @return integer
+         */
         public static function getScore($commentId) {
             try {
                 $dbconn = Database::getInstance()->getConnection();
@@ -243,7 +248,8 @@
                 $statement->bindParam(":commentId", $commentId, PDO::PARAM_INT);
                 $statement->execute();
                 $result = $statement->fetchAll()[0];
-                return $result;
+                
+                return $result["score"] ? $result["score"] : 0;
             } catch (PDOException $e) {
                 LogsService::logException($e);
                 return false;
