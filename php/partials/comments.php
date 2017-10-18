@@ -39,25 +39,29 @@
     
     Vue.component('comment', {
     name: 'comment',
-            props: ["comment","level","isLoading"],
+            props: ["comment","level"],
             template: `
                 <div>
                     <div v-bind:class="'card comment-' + level">
                         <div class="card-header">
-                                {{comment.userfullname}} commented {{window.moment(comment.date_comment).startOf('day').fromNow()}}
+                                {{comment.userfullname}} 
+                                <span v-if="comment.id_comment > 0">commented {{window.moment(comment.date_comment).tz("Europe/Rome").fromNow()}}</span>
+                                <span v-else>aggiungi un nuovo commento</span>
                                 <template v-if="comment.id_comment > 0">
                                     <a class="btn btn-sm btn-outline-success" v-on:click="gradeUp"><i class="fa fa-thumbs-o-up"></i></a>
                                     <a class="btn btn-sm btn-outline-danger"  v-on:click="gradeDown"><i class="fa fa-thumbs-o-down"></i></a>
                                     <a class="btn btn-sm btn-outline-primary" v-on:click="gradeRemove"><i class="fa-times"></i></a>
                                     <a class="btn btn-sm btn-outline-primary">{{comment.score}}</a>
-                                    <i class="fa fa-reply" v-on:click="reply"></i>
+                                    <button class="btn btn-sm" style="float: right" v-on:click="reply">
+                                        <i class="fa fa-reply"></i>
+                                    </button>
                                 </template>
                         </div>
                         <div class="card-block">
                             <template v-if="!(comment.id_comment > 0)">
                                 <input type="text" class="form-control" v-model="comment.text" style="max-width: calc(100% - 38px); display: inline"/>
-                                <button class="btn btn-sm btn-outline-success">
-                                    <i class="fa fa-save" v-on:click="save" v-if="!isLoading"></i>
+                                <button class="btn btn-sm btn-outline-success" v-on:click="save">
+                                    <i class="fa fa-save" v-if="!isLoading"></i>
                                     <i class="fa fa-circle-o-notch fa-spin" v-else></i>
                                 </button>
                             </template>
@@ -86,11 +90,11 @@
                             if(data != null){
                                 this.comment.id_comment = data;
                                 this.refresh();
-                                this.isLoading = true;
+                                this.isLoading = false;
                             }
                         }).catch((ex)=>{
                             console.error(ex);
-                            this.isLoading = true;
+                            this.isLoading = false;
                         });
                     }
                 },
@@ -133,6 +137,11 @@
                                          this.comment.score = data;
                     });
                 }
+            },
+            data: function(){
+                return {
+                    isLoading: false
+                }
             }
     });
     var commentsSection = new Vue({
@@ -145,14 +154,12 @@
     var newEmptyComment = null;
     $(document).on("click", ".comments-dialog-opener", function () {
         var reviewId = $(this).attr("data-review-id");
-        
-            var d = new Date();
-            d.setTime( d.getTime() + d.getTimezoneOffset()*60*1000 );
+
         newEmptyComment = {
                 userfullname: "<?php echo AuthenticationService::getFullName() ?>",
                 id_user: <?php echo AuthenticationService::getUserId() ?>,
                 id_review: Number(reviewId),
-                date_comment: d.toISOString(),
+                date_comment: moment().tz("Europe/Rome").format(),
                 score: 0
             };
         commentsSection.comments = [];

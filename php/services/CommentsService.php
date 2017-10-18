@@ -25,6 +25,7 @@
                         LEFT JOIN grades_comments gc ON gc.id_comment = c.id_comment
                     WHERE id_review = :id_review AND c.id_ref_comm IS NULL
                     GROUP BY c.id_comment, userfullname
+                    ORDER BY c.date_comment ASC
                 ');
                 $statement->bindParam(":id_review", $reviewId);
                 $row = $statement->execute();
