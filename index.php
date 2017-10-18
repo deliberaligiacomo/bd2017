@@ -26,7 +26,7 @@ if (!AuthenticationService::isLoggedIn()) {
 
         <div class="container">
             <?php
-            $books = BooksService::research(isset($_GET["keyword"]) ? $_GET["keyword"] : null, isset($_GET["sort"]) ? $_GET["sort"] : Defaults::ASC);
+            $books = BooksService::research(isset($_GET["keyword"]) ? $_GET["keyword"] : null, isset($_GET["sort"]) ? $_GET["sort"] : Defaults::DESC);
             if (!$books || count($books) == 0) {
                 echo '
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
