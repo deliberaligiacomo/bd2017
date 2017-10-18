@@ -105,7 +105,8 @@ require_once( __DIR__ . '/../services/Defaults.php');
                 if (!this.comment.children)
                     this.comment.children = [];
                 if (this.comment.children.length == 0 || (this.comment.children[this.comment.children.length - 1].id_comment > 0)) {
-                    this.comment.children.push({
+                    // push?
+                    this.comment.children.unshift({
                         userfullname: newEmptyComment.userfullname,
                         id_user: newEmptyComment.id_user,
                         id_review: newEmptyComment.id_review,
