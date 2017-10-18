@@ -115,7 +115,7 @@
                     this.$http.get(url)
                                 .then(data => data.json())
                                 .then(data =>{
-                                    if(data)
+                                    if(data != null)
                                          this.comment.score = data;
                     });
                 },
@@ -124,7 +124,7 @@
                     this.$http.get(url)
                                 .then(data => data.json())
                                 .then(data =>{
-                                    if(data)
+                                    if(data != null)
                                          this.comment.score = data;
                     });
                 },
@@ -133,7 +133,7 @@
                     this.$http.get(url)
                                 .then(data => data.json())
                                 .then(data =>{
-                                    if(data)
+                                    if(data != null)
                                          this.comment.score = data;
                     });
                 }
