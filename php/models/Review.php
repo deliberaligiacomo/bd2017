@@ -100,7 +100,7 @@
             echo '
                 <form action="' . Defaults::DEFAULT_BASE_URL . '/php/rest/add-review.php" method="post" name="AddReviewForm">
                         <div class="review-block" style="min-width: 100%">
-                            <span>' . AuthenticationService::getUsername() . '</span>
+                            <span>' . AuthenticationService::getFullName() . '</span>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="review-block-rate">

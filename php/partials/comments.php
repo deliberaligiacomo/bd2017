@@ -39,7 +39,7 @@
     
     Vue.component('comment', {
     name: 'comment',
-            props: ["comment","level"],
+            props: ["comment","level","isLoading"],
             template: `
                 <div>
                     <div v-bind:class="'card comment-' + level">
@@ -48,7 +48,7 @@
                                 <template v-if="comment.id_comment > 0">
                                     <a class="btn btn-sm btn-outline-success" v-on:click="gradeUp"><i class="fa fa-thumbs-o-up"></i></a>
                                     <a class="btn btn-sm btn-outline-danger"  v-on:click="gradeDown"><i class="fa fa-thumbs-o-down"></i></a>
-                                    <a class="btn btn-sm btn-outline-primary" v-on:click="gradeRemove"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-sm btn-outline-primary" v-on:click="gradeRemove"><i class="fa-times"></i></a>
                                     <a class="btn btn-sm btn-outline-primary">{{comment.score}}</a>
                                     <i class="fa fa-reply" v-on:click="reply"></i>
                                 </template>
@@ -56,7 +56,10 @@
                         <div class="card-block">
                             <template v-if="!(comment.id_comment > 0)">
                                 <input type="text" class="form-control" v-model="comment.text" style="max-width: calc(100% - 38px); display: inline"/>
-                                <button class="btn btn-sm btn-outline-success"><i class="fa fa-save" v-on:click="save"></i></button>
+                                <button class="btn btn-sm btn-outline-success">
+                                    <i class="fa fa-save" v-on:click="save" v-if="!isLoading"></i>
+                                    <i class="fa fa-circle-o-notch fa-spin" v-else></i>
+                                </button>
                             </template>
                             <p class="card-text p-1" v-else>{{comment.text}}</p>
                         </div>
@@ -74,15 +77,20 @@
             methods: {
                 save: function () {
                     if(this.comment.text && this.comment.text.length){
+                        this.isLoading = true;
                         this.$http.post(
                              "<?php echo Defaults::DEFAULT_BASE_URL; ?>/php/rest/add-comment.php",
                              this.comment
                         ).then(data => data.json())
                         .then(data => {
                             if(data != null){
-                              this.comment.id_comment = data;
-                              this.refresh();
+                                this.comment.id_comment = data;
+                                this.refresh();
+                                this.isLoading = true;
                             }
+                        }).catch((ex)=>{
+                            console.error(ex);
+                            this.isLoading = true;
                         });
                     }
                 },
