@@ -24,9 +24,6 @@
             </div>
             <div class="form-group">
                 <input type="password" class="form-control form-control-sm" name="Password" placeholder="Password" required="true" autocomplete="off"/>     
-            </div>
-            <div class="form-group">		  
-                <input type="password" class="form-control form-control-sm" name="RepeatPassword" placeholder="Repeat password" required="true" autocomplete="off"/>     
             </div>		  
             <button class="btn btn-sm btn-primary"  name="Submit" value="SignUp" type="Submit">Register</button>  			
         </form>
