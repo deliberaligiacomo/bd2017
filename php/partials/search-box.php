@@ -1,7 +1,7 @@
 <!-- The navbar search box -->
 
 <div class="input-group input-group-sm" id="searchBox">
-    <input id="keyword" type="text" class="form-control form-control-sm" value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : ""; ?>" placeholder="<?php echo $isLogged ? $_SESSION["Username"] . " search" : "Search" ?> a book..." aria-label="Search for...">
+    <input id="keyword" type="text" class="form-control form-control-sm" value="<?php echo isset($_GET["keyword"]) ? $_GET["keyword"] : ""; ?>" placeholder="<?php echo $isLogged ? AuthenticationService::getFirstName() . " search" : "Search" ?> a book..." aria-label="Search for...">
     <span class="input-group-btn hidden" id="cancelButtonGroup">
         <button class="btn btn-secondary btn-sm" type="button" id="cancelButton">&times;</button>
     </span>

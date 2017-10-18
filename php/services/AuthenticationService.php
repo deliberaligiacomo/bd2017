@@ -24,7 +24,8 @@
                     SELECT 
                         id, 
                         username,
-                        concat_ws(\'\', firstName, \' \', lastname) as userfullname
+                        concat_ws(\'\', firstName, \' \', lastname) as userfullname,
+                        firstname
                     FROM 
                         users 
                     WHERE 
@@ -39,12 +40,14 @@
                     $_SESSION["UserId"] = $result[0];
                     $_SESSION["Username"] = $result[1];
                     $_SESSION["UserFullName"] = $result[2];
+                    $_SESSION["UserFirstName"] = $result[3];
                     return true;
                 }
                 // destry the session username and return false
                 unset($_SESSION["Username"]);
                 unset($_SESSION["UserId"]);
                 unset($_SESSION["UserFullName"]);
+                unset($_SESSION["UserFirstName"]);
                 return false;
             } catch (PDOException $e) {
                 LogsService::logException($e);
@@ -69,11 +72,19 @@
         }
         
         /**
-         * Returns the current logged in user fullname or null
+         * Returns the current logged in user full name or null
          * @return string
          */
         public static function getFullName() {
             return self::isLoggedIn() ? $_SESSION["UserFullName"] : null;
+        }
+        
+        /**
+         * Returns the current logged in user first name or null
+         * @return string
+         */
+        public static function getFirstName() {
+            return self::isLoggedIn() ? $_SESSION["UserFirstName"] : null;
         }
 
         /**
