@@ -186,9 +186,9 @@
                 WHERE 
                     lower(b.title) LIKE lower(:key)
                         OR
-                    lower(a.firstName) LIKE lower(:key)
+                    lower(concat_ws(\'\', a.firstName, \' \', a.lastname)) LIKE lower(:key)
                         OR
-                    lower(a.lastname) LIKE lower(:key)
+                    lower(b.genre) LIKE lower(:key)
                 GROUP BY 
                     b.id, 
                     b.title, 
