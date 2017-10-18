@@ -1,6 +1,6 @@
 <?php
-    require_once( __DIR__ . '/../services/AuthenticationService.php');
-    require_once( __DIR__ . '/../services/Defaults.php');
+require_once( __DIR__ . '/../services/AuthenticationService.php');
+require_once( __DIR__ . '/../services/Defaults.php');
 ?>
 <!-- Modal -->
 <div class="modal fade" id="comments" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -36,11 +36,11 @@
 <script>
     Vue.prototype.window = window;
     Vue.http.headers.common['content-type'] = 'application/json';
-    
+
     Vue.component('comment', {
-    name: 'comment',
-            props: ["comment","level"],
-            template: `
+        name: 'comment',
+        props: ["comment", "level"],
+        template: `
                 <div>
                     <div v-bind:class="'card comment-' + level">
                         <div class="card-header">
@@ -78,90 +78,97 @@
                     </template>
                 </div>
             `,
-            methods: {
-                save: function () {
-                    if(this.comment.text && this.comment.text.length){
-                        this.isLoading = true;
-                        this.$http.post(
-                             "<?php echo Defaults::DEFAULT_BASE_URL; ?>/php/rest/add-comment.php",
-                             this.comment
-                        ).then(data => data.json())
-                        .then(data => {
-                            if(data != null){
-                                this.comment.id_comment = data;
-                                this.refresh();
-                                this.isLoading = false;
-                            }
-                        }).catch((ex)=>{
-                            console.error(ex);
-                            this.isLoading = false;
-                        });
-                    }
-                },
-                refresh(){
-                    this.$forceUpdate();
-                },
-                reply(){
-                    if(!this.comment.children)
-                        this.comment.children = [];
-                    if(this.comment.children.length == 0 || (this.comment.children[this.comment.children.length - 1].id_comment > 0)){
-                        var newComment = JSON.parse(JSON.stringify(newEmptyComment));
-                        newComment.id_ref_comm = this.comment.id_comment || null;
-                        this.comment.children.push(newComment);
-                    }
-                },
-                gradeUp(){
-                    var url = '<?php echo Defaults::DEFAULT_BASE_URL?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_UP?>&userId=<?php echo AuthenticationService::getUserId()?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"]?>';
-                    this.$http.get(url)
-                                .then(data => data.json())
-                                .then(data =>{
-                                    if(data != null)
-                                         this.comment.score = data;
-                    });
-                },
-                gradeDown(){
-                    var url = '<?php echo Defaults::DEFAULT_BASE_URL?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_DOWN?>&userId=<?php echo AuthenticationService::getUserId()?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"]?>';
-                    this.$http.get(url)
-                                .then(data => data.json())
-                                .then(data =>{
-                                    if(data != null)
-                                         this.comment.score = data;
-                    });
-                },
-                gradeRemove(){
-                    var url = '<?php echo Defaults::DEFAULT_BASE_URL?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_REMOVE?>&userId=<?php echo AuthenticationService::getUserId()?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"]?>';
-                    this.$http.get(url)
-                                .then(data => data.json())
-                                .then(data =>{
-                                    if(data != null)
-                                         this.comment.score = data;
+        methods: {
+            save: function () {
+                if (this.comment.text && this.comment.text.length) {
+                    this.isLoading = true;
+                    this.$http.post(
+                            "<?php echo Defaults::DEFAULT_BASE_URL; ?>/php/rest/add-comment.php",
+                            this.comment
+                            ).then(data => data.json())
+                            .then(data => {
+                                if (data != null) {
+                                    this.comment.id_comment = data;
+                                    this.refresh();
+                                    this.isLoading = false;
+                                }
+                            }).catch((ex) => {
+                        console.error(ex);
+                        this.isLoading = false;
                     });
                 }
             },
-            data: function(){
-                return {
-                    isLoading: false
+            refresh() {
+                this.$forceUpdate();
+            },
+            reply() {
+                if (!this.comment.children)
+                    this.comment.children = [];
+                if (this.comment.children.length == 0 || (this.comment.children[this.comment.children.length - 1].id_comment > 0)) {
+                    this.comment.children.push({
+                        userfullname: newEmptyComment.userfullname,
+                        id_user: newEmptyComment.id_user,
+                        id_review: newEmptyComment.id_review,
+                        date_comment: newEmptyComment.date_comment,
+                        id_ref_comm: this.comment.id_comment || null,
+                        score: 0,
+                        children: []
+                    });
+                    this.refresh();
                 }
+            },
+            gradeUp() {
+                var url = '<?php echo Defaults::DEFAULT_BASE_URL ?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_UP ?>&userId=<?php echo AuthenticationService::getUserId() ?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"] ?>';
+                this.$http.get(url)
+                        .then(data => data.json())
+                        .then(data => {
+                            if (data != null)
+                                this.comment.score = data;
+                        });
+            },
+            gradeDown() {
+                var url = '<?php echo Defaults::DEFAULT_BASE_URL ?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_DOWN ?>&userId=<?php echo AuthenticationService::getUserId() ?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"] ?>';
+                this.$http.get(url)
+                        .then(data => data.json())
+                        .then(data => {
+                            if (data != null)
+                                this.comment.score = data;
+                        });
+            },
+            gradeRemove() {
+                var url = '<?php echo Defaults::DEFAULT_BASE_URL ?>/php/rest/add-comment-grade.php?type=comment&grade=<?php echo Defaults::SCORE_REMOVE ?>&userId=<?php echo AuthenticationService::getUserId() ?>&commentId=' + this.comment.id_comment + '&prevUrl=<?php echo $_SERVER["REQUEST_URI"] ?>';
+                this.$http.get(url)
+                        .then(data => data.json())
+                        .then(data => {
+                            if (data != null)
+                                this.comment.score = data;
+                        });
             }
+        },
+        data: function () {
+            return {
+                isLoading: false
+            }
+        }
     });
     var commentsSection = new Vue({
-    el: '#commentsList',
-            data: {
-                comments: [],
-                emptyMessage: "No comments found"
-            }
+        el: '#commentsList',
+        data: {
+            comments: [],
+            emptyMessage: "No comments found"
+        }
     });
     var newEmptyComment = null;
     $(document).on("click", ".comments-dialog-opener", function () {
         var reviewId = $(this).attr("data-review-id");
 
         newEmptyComment = {
-                userfullname: "<?php echo AuthenticationService::getFullName() ?>",
-                id_user: <?php echo AuthenticationService::getUserId() ?>,
-                id_review: Number(reviewId),
-                date_comment: moment().tz("Europe/Rome").format(),
-                score: 0
-            };
+            userfullname: "<?php echo AuthenticationService::getFullName() ?>",
+            id_user: <?php echo AuthenticationService::getUserId() ?>,
+            id_review: Number(reviewId),
+            date_comment: moment().tz("Europe/Rome").format(),
+            score: 0
+        };
         commentsSection.comments = [];
         $.getJSON("<?php echo Defaults::DEFAULT_BASE_URL; ?>/php/rest/get-comments.php?reviewId=" + reviewId, function (data) {
             commentsSection.comments = data || [];
