@@ -6,3 +6,9 @@ nbdist/
 .nb-gradle/
 *.ini
 *.txt
+*.log
+*.aux
+*.toc
+*.out
+*.gz
+*.tmp
