@@ -261,11 +261,12 @@
                 $dbconn = Database::getInstance()->getConnection();
                 $query = '
                         SELECT 
-                            *
-                        FROM 
-                            books
+                            b.*,
+                            concat_ws(\'\', a.firstname, \' \', a.lastname) as author
+                        FROM books b JOIN books_authors ba ON ba.id_book = b.id
+                        JOIN authors a ON ba.id_author = a.id
                         WHERE
-                            id = :bookId
+                            b.id = :bookId
                     ';
 
                 $statement = $dbconn->prepare($query);

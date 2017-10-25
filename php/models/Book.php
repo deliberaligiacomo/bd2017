@@ -52,8 +52,8 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-xs-12">
-                        <a href="./php/book.php?id=' . $this->id . '"><h4>' . $this->title . '<small>&nbsp;' . $this->author . '</small></h4></a>
-                        </div>
+                        ' . ($hasRate ? '<a href="./php/book.php?id=' . $this->id . '"><h4>' . $this->title . '<small>&nbsp;' . $this->author . '</small></h4></a>' : '<h4>' . $this->title . '<small>&nbsp;' . $this->author . '</small></h4>') .
+                        '</div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
