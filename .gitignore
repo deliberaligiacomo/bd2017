@@ -12,3 +12,4 @@ nbdist/
 *.out
 *.gz
 *.tmp
+*.gz(busy)
