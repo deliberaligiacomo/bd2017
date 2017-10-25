@@ -7,7 +7,6 @@
     // if a username and a password is given in POST, then try to login
     if(isset($_POST["Username"]) &&
         isset($_POST["Password"]) && 
-        isset($_POST["RepeatPassword"]) &&
         isset($_POST["Email"]) &&
         isset($_POST["FirstName"]) &&
         isset($_POST["LastName"]) &&
